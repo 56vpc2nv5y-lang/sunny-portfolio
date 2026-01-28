@@ -1,108 +1,102 @@
-// ===== Scroll Reveal =====
-const revealEls = document.querySelectorAll(".reveal");
-const io = new IntersectionObserver((entries) => {
-  for (const e of entries) {
-    if (e.isIntersecting) e.target.classList.add("visible");
-  }
-}, { threshold: 0.12 });
-revealEls.forEach(el => io.observe(el));
-
-// ===== Year =====
+// ===== Footer year
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// ===== Project filters =====
-const chips = document.querySelectorAll(".chip");
-const projects = document.querySelectorAll(".project");
-chips.forEach(chip => {
-  chip.addEventListener("click", () => {
-    chips.forEach(c => c.classList.remove("active"));
-    chip.classList.add("active");
-    const f = chip.dataset.filter;
+// ===== Project filter chips (works with <details> cards)
+const chips = Array.from(document.querySelectorAll(".chip"));
+const projCards = Array.from(document.querySelectorAll(".proj-card"));
 
-    projects.forEach(p => {
-      const tags = (p.dataset.tags || "").split(",").map(s => s.trim());
-      const show = (f === "all") || tags.includes(f);
-      p.style.display = show ? "" : "none";
-    });
-  });
-});
+function setActiveChip(el){
+  chips.forEach(c => c.classList.remove("active"));
+  el.classList.add("active");
+}
 
-// ===== Skills evidence (new tabs style) =====
-const evidenceData = {
-  sql: {
-    title: "Usage Evidence for SQL:",
-    items: [
-      { label: "DataStory Internship — Monthly KPI reporting & validation", href: "#exp-datastory", meta: "SQL extraction, cleaning, and metric checks for management reports" },
-      { label: "DataStory Internship — Dashboard metric pipeline", href: "#exp-datastory", meta: "KPI monitoring supporting performance tracking" }
-    ]
-  },
-  tableau: {
-    title: "Usage Evidence for Tableau:",
-    items: [
-      { label: "DataStory Internship — 10+ dashboards for leadership review", href: "#exp-datastory", meta: "BI dashboards for performance tracking and reporting" }
-    ]
-  },
-  python_nlp: {
-    title: "Usage Evidence for Python (NLP):",
-    items: [
-      { label: "Government Social Media Comment Analysis (NLP)", href: "#proj-gov-nlp", meta: "Pipeline on 20,000 comments: preprocessing → categorization → metrics" },
-      { label: "DataStory Internship — Sentiment analysis", href: "#exp-datastory", meta: "50K+ brand comments sentiment insights for marketing support" }
-    ]
-  },
-  modelling: {
-    title: "Usage Evidence for Statistical Modelling:",
-    items: [
-      { label: "Health Engagement via the Internet", href: "#proj-health", meta: "Driver analysis through modelling with interpretable recommendations" },
-      { label: "Teaching Assistant (Econometrics) — applied modelling methods", href: "#exp-ta", meta: "Econometrics + modelling concepts taught and applied in practice" }
-    ]
-  },
-  market_research: {
-    title: "Usage Evidence for Market Research:",
-    items: [
-      { label: "Haitong Securities — daily/weekly market reports", href: "#exp-securities", meta: "Market trend analysis based on price/volume and industry data" },
-      { label: "DataStory Internship — social listening insights", href: "#exp-datastory", meta: "Consumer sentiment & engagement analysis supporting strategy" }
-    ]
-  }
-};
+function applyFilter(tag){
+  projCards.forEach(card => {
+    const tags = (card.getAttribute("data-tags") || "").split(",").map(s => s.trim());
+    const show = (tag === "all") || tags.includes(tag);
+    card.style.display = show ? "" : "none";
 
-const tabs = document.querySelectorAll(".skill-tab");
-const evidenceTitle = document.getElementById("evidence-title");
-const evidenceList = document.getElementById("evidence-list");
-
-function renderEvidence(key){
-  const data = evidenceData[key];
-  if (!data) return;
-
-  evidenceTitle.textContent = data.title;
-  evidenceList.innerHTML = "";
-
-  data.items.forEach(it => {
-    const row = document.createElement("div");
-    row.className = "evidence-item";
-    row.innerHTML = `
-      <div class="evidence-bullet">→</div>
-      <div>
-        <div><a href="${it.href}">${it.label}</a></div>
-        <div class="evidence-meta">${it.meta}</div>
-      </div>
-    `;
-    evidenceList.appendChild(row);
+    // optional: collapse hidden items
+    if (!show && card.open) card.open = false;
   });
 }
 
-// tab click
-tabs.forEach(t => {
-  t.addEventListener("click", () => {
-    tabs.forEach(x => {
-      x.classList.remove("active");
-      x.setAttribute("aria-selected", "false");
-    });
-    t.classList.add("active");
-    t.setAttribute("aria-selected", "true");
-    renderEvidence(t.dataset.skill);
+chips.forEach(chip => {
+  chip.addEventListener("click", () => {
+    const tag = chip.getAttribute("data-filter");
+    setActiveChip(chip);
+    applyFilter(tag);
   });
 });
 
-// default select: Python (NLP) or SQL (你想默认哪个都行)
-const defaultTab = document.querySelector('.skill-tab[data-skill="python_nlp"]') || document.querySelector('.skill-tab[data-skill="sql"]');
-if (defaultTab) defaultTab.click();
+// ===== Skills evidence panel
+const skillTabs = Array.from(document.querySelectorAll(".skill-tab"));
+const titleEl = document.getElementById("evidence-title");
+const listEl = document.getElementById("evidence-list");
+
+// You can edit these to match your real evidence.
+// "anchor" links jump to the section ids you already have.
+const evidenceMap = {
+  sql: [
+    { where: "Experience: DataStory — KPI reporting & validation", anchor: "#exp-datastory" },
+    { where: "Project: National Happiness Index — data processing", anchor: "#proj-happiness" },
+  ],
+  tableau: [
+    { where: "Experience: DataStory — BI dashboards", anchor: "#exp-datastory" },
+    { where: "Projects — visualization summaries", anchor: "#projects" },
+  ],
+  python_nlp: [
+    { where: "Project: Government Social Media Comment Analysis (NLP)", anchor: "#proj-gov-nlp" },
+  ],
+  modelling: [
+    { where: "Project: Health Engagement — multi-model analysis", anchor: "#proj-health" },
+    { where: "Education: Statistical Modelling modules", anchor: "#education" },
+  ],
+  market_research: [
+    { where: "Experience: Haitong Securities — market reports", anchor: "#exp-securities" },
+    { where: "Project: Health Engagement — indicators and recommendations", anchor: "#proj-health" },
+  ],
+};
+
+function renderEvidence(skillKey, label){
+  titleEl.textContent = `Usage Evidence for ${label}:`;
+  listEl.innerHTML = "";
+
+  const items = evidenceMap[skillKey] || [];
+  if (items.length === 0){
+    const empty = document.createElement("div");
+    empty.className = "evidence-item";
+    empty.textContent = "Add evidence items for this skill.";
+    listEl.appendChild(empty);
+    return;
+  }
+
+  items.forEach(it => {
+    const div = document.createElement("div");
+    div.className = "evidence-item";
+    div.innerHTML = `
+      <div class="where">${it.where}</div>
+      <a href="${it.anchor}">View evidence →</a>
+    `;
+    listEl.appendChild(div);
+  });
+}
+
+function setActiveSkill(tab){
+  skillTabs.forEach(t => t.classList.remove("active"));
+  tab.classList.add("active");
+  tab.setAttribute("aria-selected", "true");
+  skillTabs.filter(t => t !== tab).forEach(t => t.setAttribute("aria-selected", "false"));
+}
+
+skillTabs.forEach(tab => {
+  tab.addEventListener("click", () => {
+    const skillKey = tab.getAttribute("data-skill");
+    const label = tab.textContent.trim();
+    setActiveSkill(tab);
+    renderEvidence(skillKey, label);
+  });
+});
+
+// initial
+renderEvidence("sql", "SQL");
