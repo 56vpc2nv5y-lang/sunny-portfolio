@@ -43,7 +43,7 @@ a{color:inherit}
   color:var(--accent)!important;
   border:1px solid #bfdbfe;
 }
-@media (max-width: 800px) { .nav { display: none; } } /* Mobile hide nav */
+@media (max-width: 800px) { .nav { display: none; } } /* 移动端隐藏菜单 */
 
 /* Sections */
 .section{padding:72px 0}
@@ -221,8 +221,7 @@ p{line-height:1.65}
 }
 .taglink:hover{background:#dbeafe}
 
-
-/* ===== Education quant layout ===== */
+/* Education quant layout */
 .edu-rows{
   display:grid;
   grid-template-columns: .9fr 1.1fr;
@@ -248,89 +247,133 @@ p{line-height:1.65}
   color:#1d4ed8;
 }
 
-/* ===== NEW: Project Card Layout ===== */
-.project-collapsible .project-head {
+/* =========================================
+   NEW: Split Timeline Layout
+   ========================================= */
+
+.split-layout {
   display: grid;
-  grid-template-columns: 80px 1fr auto; 
-  gap: 18px;
-  align-items: center;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  position: relative;
 }
 
-@media (max-width: 640px) {
-  .project-collapsible .project-head {
-    grid-template-columns: 1fr auto;
+/* 移动端变成单列 */
+@media (max-width: 800px) {
+  .split-layout {
+    grid-template-columns: 1fr;
+    gap: 50px;
   }
-  .project-icon { display: none; }
 }
 
-.project-icon {
-  width: 80px;
-  height: 80px;
+.col-title {
+  font-size: 20px;
+  color: #1e3a8a; /* 深蓝标题 */
+  margin-bottom: 24px;
+  padding-left: 12px;
+  border-left: 4px solid #bfdbfe;
+}
+
+.timeline-column {
+  position: relative;
+  border-left: 2px solid #e2e8f0; /* 时间轴竖线 */
+  padding-left: 24px; /* 给卡片留出空间 */
+}
+
+/* 时间轴上的小圆点 */
+.time-marker {
+  position: absolute;
+  left: -31px; /* 调整圆点位置对齐竖线 */
+  top: 24px;
+  width: 12px;
+  height: 12px;
+  background: #fff;
+  border: 2px solid #2563eb;
+  border-radius: 50%;
+  z-index: 2;
+}
+
+.time-card {
+  position: relative;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
   border-radius: 12px;
-  overflow: hidden;
-  background: #f1f5f9;
-  border: 1px solid var(--line);
-  flex-shrink: 0;
+  padding: 16px;
+  margin-bottom: 20px;
+  box-shadow: 0 4px 12px rgba(15,23,42,.03);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.project-icon img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+.time-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 20px rgba(15,23,42,.08);
+  border-color: #93c5fd;
 }
 
-.project-head-left {
+/* 更加紧凑的卡片头部 */
+.small-head {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.project-one-liner {
-  margin: 4px 0 8px 0;
-  font-size: 14px;
-  color: var(--muted);
+.time-tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
 }
 
-.project-collapsible .pillrow {
-  margin-top: 0;
+.time-card h4 {
+  margin: 0 0 8px 0;
+  font-size: 16px;
+  color: #0f172a;
 }
 
+.pillrow.compact {
+  margin-top: 6px;
+  gap: 6px;
+}
+
+.pillrow.compact .tag {
+  padding: 4px 8px;
+  font-size: 11px;
+}
+
+/* 调整 Toggle 按钮大小 */
+.time-card .proj-toggle {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+}
+.time-card .proj-toggle .plus {
+  font-size: 16px;
+}
+
+/* 内容区域 */
+.time-card .project-body {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #f1f5f9;
+}
+
+/* Toggle Logic */
 .proj-toggle {
-  width: 42px;
-  height: 42px;
-  border-radius: 14px;
   border: 1px solid var(--line);
   background: #ffffff;
   cursor: pointer;
-  box-shadow: 0 10px 24px rgba(15,23,42,.06);
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-  transition: transform .16s ease, background .16s ease, border-color .16s ease;
 }
 .proj-toggle:hover {
-  transform: translateY(-2px);
   background: #f8fafc;
   border-color: #93c5fd;
-}
-.proj-toggle .plus {
-  font-weight: 900;
-  font-size: 18px;
-  color: #1d4ed8;
-  line-height: 1;
-}
-
-.project-body {
-  margin-top: 14px;
-  border-top: 1px solid var(--line);
-  padding-top: 14px;
-  animation: projOpen .18s ease;
-}
-
-@keyframes projOpen {
-  from { opacity: 0; transform: translateY(-6px) }
-  to { opacity: 1; transform: translateY(0) }
 }
 
 /* Text & Insight Box */
@@ -338,22 +381,20 @@ p{line-height:1.65}
   font-size: 14px;
   color: var(--text);
   line-height: 1.6;
-  margin-bottom: 16px;
-  padding: 0 4px;
+  margin-bottom: 12px;
 }
 
 .proj-insight-box {
   background: #eff6ff;
   border: 1px solid #bfdbfe;
   border-radius: 12px;
-  padding: 14px 16px;
-  margin-bottom: 16px;
+  padding: 12px 14px;
 }
 
 .proj-insight-box .proj-label {
   color: #1d4ed8;
   font-weight: 800;
-  font-size: 14px;
+  font-size: 13px;
   margin-bottom: 6px;
   display: block;
 }
@@ -362,19 +403,12 @@ p{line-height:1.65}
   margin: 0;
   padding-left: 18px;
   color: #1e3a8a;
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.5;
 }
-.proj-insight-box .proj-list li { margin: 6px 0; }
+.proj-insight-box .proj-list li { margin: 4px 0; }
 
-.proj-links {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 10px;
-}
-
-/* Skills evidence */
+/* Skills tabs */
 .skill-tabs{
   display:flex;
   gap:18px;
@@ -473,18 +507,4 @@ p{line-height:1.65}
 .reveal.visible{
   opacity:1;
   transform: translateY(0);
-}
-
-/* Hover lift */
-.card{
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.card:hover{
-  transform: translateY(-6px);
-  box-shadow: 0 14px 34px rgba(15,23,42,.12);
-  border-color: #93c5fd;
-}
-.project:hover{
-  transform: translateY(-8px);
-  box-shadow: 0 18px 40px rgba(15,23,42,.14);
 }
