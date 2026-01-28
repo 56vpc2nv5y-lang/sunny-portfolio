@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', () => {
             // Check if currently open
             const isOpen = acc.classList.contains('active');
             
-            // Close all others (Optional: if you want only one open at a time)
+            // Close all others (保持一次只开一个，显得整洁)
             accordions.forEach(other => {
                 other.classList.remove('active');
                 other.querySelector('.accordion-body').style.maxHeight = null;
@@ -32,6 +32,7 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!isOpen) {
                 acc.classList.add('active');
                 const body = acc.querySelector('.accordion-body');
+                // Calculate height for smooth animation
                 body.style.maxHeight = body.scrollHeight + "px";
             }
         });
@@ -41,9 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
+            const target = document.querySelector(this.getAttribute('href'));
+            if(target) {
+                target.scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
         });
     });
 });
