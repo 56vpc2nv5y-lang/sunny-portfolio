@@ -32,51 +32,53 @@ chips.forEach(chip => {
 // ===== Skills evidence mapping =====
 const evidence = {
   sql: [
-    { title: "DataStory Internship — Reporting & dashboards", href: "#exp-datastory", meta: "Monthly reporting, KPI extraction & validation" },
-    { title: "National Happiness Index (Project)", href: "#proj-happiness", meta: "Index construction + analysis pipeline" }
+    { title: "DataStory Internship — Monthly KPI reporting", href: "#exp-datastory", meta: "SQL extraction, cleaning, validation for management reports" },
+    { title: "DataStory Internship — Dashboard metrics pipeline", href: "#exp-datastory", meta: "KPI tracking for performance review" }
   ],
   excel: [
-    { title: "Audit Internship — Financial analysis", href: "#exp-audit", meta: "Variance / error-rate analysis, PCA" },
-    { title: "Haitong Securities — Market reporting", href: "#exp-securities", meta: "Daily/weekly reports and data compilation" }
+    { title: "DataStory Internship — Reporting operations", href: "#exp-datastory", meta: "Excel validation + recurring reporting workflow" },
+    { title: "Audit Internship — Risk checks & transaction review", href: "#exp-audit", meta: "200+ transactions, variance/error-rate analysis" },
+    { title: "Haitong Securities — Daily/weekly reporting", href: "#exp-securities", meta: "Report production based on market data" }
   ],
   tableau: [
-    { title: "DataStory Internship — 10+ dashboards", href: "#exp-datastory", meta: "BI dashboards for performance tracking" }
+    { title: "DataStory Internship — 10+ BI dashboards", href: "#exp-datastory", meta: "Performance tracking & leadership review dashboards" },
+    { title: "Health Engagement (Project) — Visual summaries", href: "#proj-health", meta: "Insights translated into stakeholder-friendly charts" }
   ],
   python: [
-    { title: "Government Social Media NLP (Project)", href: "#proj-gov-nlp", meta: "Data pipeline + text processing" },
-    { title: "TA — ML analysis for learning outcomes", href: "#exp-ta", meta: "Decision Trees / XGBoost / NN (supplementary)" }
+    { title: "Government Social Media NLP (Project)", href: "#proj-gov-nlp", meta: "Data collection + preprocessing pipeline for 20,000 comments" },
+    { title: "Health Engagement (Project) — Modelling workflow", href: "#proj-health", meta: "Modelling + analysis pipeline" }
   ],
   stata: [
-    { title: "TA — Econometrics workshops", href: "#exp-ta", meta: "Panel data (GMM), PCA, DiD, IV" }
+    { title: "Teaching Assistant — Econometrics workshops", href: "#exp-ta", meta: "Panel data (GMM), causal inference (DiD/IV), PCA" }
   ],
   ml: [
-    { title: "TA — Student performance modelling", href: "#exp-ta", meta: "ML models to identify predictors" },
-    { title: "Health Engagement (Project)", href: "#proj-health", meta: "Random Forest and other approaches" }
+    { title: "Teaching Assistant — Learning outcome analysis", href: "#exp-ta", meta: "Decision Trees / Neural Networks / XGBoost (supplementary)" },
+    { title: "Health Engagement (Project)", href: "#proj-health", meta: "Random Forest and other approaches for driver analysis" }
   ],
   modelling: [
-    { title: "Health Engagement (Project)", href: "#proj-health", meta: "Multiple modelling approaches + SEM" },
-    { title: "Audit Internship", href: "#exp-audit", meta: "PCA + analytical checks" }
+    { title: "Health Engagement (Project) — Multi-method modelling", href: "#proj-health", meta: "Clustering, ordinal logistic regression, SEM, etc." },
+    { title: "Audit Internship — PCA-based risk scanning", href: "#exp-audit", meta: "Operational/financial risk point identification" }
   ],
   nlp: [
-    { title: "Government Social Media NLP (Project)", href: "#proj-gov-nlp", meta: "20,000 comments pipeline" },
-    { title: "DataStory — Sentiment analysis", href: "#exp-datastory", meta: "50K+ comments sentiment insights" }
+    { title: "Government Social Media Comment Analysis (Project)", href: "#proj-gov-nlp", meta: "Unstructured → structured engagement metrics" },
+    { title: "DataStory Internship — Sentiment analysis (50K+)", href: "#exp-datastory", meta: "Brand comment sentiment insights for marketing strategy" }
   ],
   viz: [
-    { title: "DataStory — Tableau dashboards", href: "#exp-datastory", meta: "Visualization for leadership review" },
-    { title: "Health Engagement (Project)", href: "#proj-health", meta: "Tableau visualizations for strategy" }
+    { title: "DataStory Internship — Dashboards for tracking", href: "#exp-datastory", meta: "Tableau dashboards + KPI monitoring" },
+    { title: "DataStory Internship — ESG visualization", href: "#exp-datastory", meta: "Indicator structuring + engagement visualization" },
+    { title: "Health Engagement (Project) — Insight storytelling", href: "#proj-health", meta: "Clear visuals to support recommendations" }
   ],
   risk: [
-    { title: "Audit Internship — Compliance & control", href: "#exp-audit", meta: "Risk points + governance exposure" }
+    { title: "Audit Internship — Compliance & internal control", href: "#exp-audit", meta: "Risk identification under IFRS context" }
   ],
   finance: [
-    { title: "Haitong Securities — Market & industry reporting", href: "#exp-securities", meta: "Market trends and portfolio insights" }
+    { title: "Haitong Securities — Market trend reporting", href: "#exp-securities", meta: "Price/volume comparison + investment insights" }
   ],
   storytelling: [
-    { title: "Haitong Securities — Weekly insights", href: "#exp-securities", meta: "Insights delivered to clients" },
-    { title: "National Happiness Index (Project)", href: "#proj-happiness", meta: "Policy-oriented recommendations" }
+    { title: "Haitong Securities — Weekly insights", href: "#exp-securities", meta: "Reports + roadshow support for clients" },
+    { title: "National Happiness Index (Project)", href: "#proj-happiness", meta: "Interpretable rankings + factor-attribution insights" }
   ]
 };
-
 const evidenceBox = document.getElementById("evidence-box");
 const evidenceDesc = document.getElementById("evidence-desc");
 const skillBtns = document.querySelectorAll(".skill-item");
