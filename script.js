@@ -1,102 +1,49 @@
-// ===== Footer year
-document.getElementById("year").textContent = new Date().getFullYear();
+document.addEventListener('DOMContentLoaded', () => {
+    
+    // 1. Reveal Animation (Scroll to show)
+    const observerOptions = { threshold: 0.1 };
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, observerOptions);
 
-// ===== Project filter chips (works with <details> cards)
-const chips = Array.from(document.querySelectorAll(".chip"));
-const projCards = Array.from(document.querySelectorAll(".proj-card"));
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-function setActiveChip(el){
-  chips.forEach(c => c.classList.remove("active"));
-  el.classList.add("active");
-}
+    // 2. Project Accordion Logic
+    const accordions = document.querySelectorAll('.project-accordion');
 
-function applyFilter(tag){
-  projCards.forEach(card => {
-    const tags = (card.getAttribute("data-tags") || "").split(",").map(s => s.trim());
-    const show = (tag === "all") || tags.includes(tag);
-    card.style.display = show ? "" : "none";
+    accordions.forEach(acc => {
+        const header = acc.querySelector('.accordion-header');
+        
+        header.addEventListener('click', () => {
+            // Check if currently open
+            const isOpen = acc.classList.contains('active');
+            
+            // Close all others (Optional: if you want only one open at a time)
+            accordions.forEach(other => {
+                other.classList.remove('active');
+                other.querySelector('.accordion-body').style.maxHeight = null;
+            });
 
-    // optional: collapse hidden items
-    if (!show && card.open) card.open = false;
-  });
-}
+            // Toggle current
+            if (!isOpen) {
+                acc.classList.add('active');
+                const body = acc.querySelector('.accordion-body');
+                body.style.maxHeight = body.scrollHeight + "px";
+            }
+        });
+    });
 
-chips.forEach(chip => {
-  chip.addEventListener("click", () => {
-    const tag = chip.getAttribute("data-filter");
-    setActiveChip(chip);
-    applyFilter(tag);
-  });
+    // 3. Smooth Scroll for Nav Links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
 });
-
-// ===== Skills evidence panel
-const skillTabs = Array.from(document.querySelectorAll(".skill-tab"));
-const titleEl = document.getElementById("evidence-title");
-const listEl = document.getElementById("evidence-list");
-
-// You can edit these to match your real evidence.
-// "anchor" links jump to the section ids you already have.
-const evidenceMap = {
-  sql: [
-    { where: "Experience: DataStory — KPI reporting & validation", anchor: "#exp-datastory" },
-    { where: "Project: National Happiness Index — data processing", anchor: "#proj-happiness" },
-  ],
-  tableau: [
-    { where: "Experience: DataStory — BI dashboards", anchor: "#exp-datastory" },
-    { where: "Projects — visualization summaries", anchor: "#projects" },
-  ],
-  python_nlp: [
-    { where: "Project: Government Social Media Comment Analysis (NLP)", anchor: "#proj-gov-nlp" },
-  ],
-  modelling: [
-    { where: "Project: Health Engagement — multi-model analysis", anchor: "#proj-health" },
-    { where: "Education: Statistical Modelling modules", anchor: "#education" },
-  ],
-  market_research: [
-    { where: "Experience: Haitong Securities — market reports", anchor: "#exp-securities" },
-    { where: "Project: Health Engagement — indicators and recommendations", anchor: "#proj-health" },
-  ],
-};
-
-function renderEvidence(skillKey, label){
-  titleEl.textContent = `Usage Evidence for ${label}:`;
-  listEl.innerHTML = "";
-
-  const items = evidenceMap[skillKey] || [];
-  if (items.length === 0){
-    const empty = document.createElement("div");
-    empty.className = "evidence-item";
-    empty.textContent = "Add evidence items for this skill.";
-    listEl.appendChild(empty);
-    return;
-  }
-
-  items.forEach(it => {
-    const div = document.createElement("div");
-    div.className = "evidence-item";
-    div.innerHTML = `
-      <div class="where">${it.where}</div>
-      <a href="${it.anchor}">View evidence →</a>
-    `;
-    listEl.appendChild(div);
-  });
-}
-
-function setActiveSkill(tab){
-  skillTabs.forEach(t => t.classList.remove("active"));
-  tab.classList.add("active");
-  tab.setAttribute("aria-selected", "true");
-  skillTabs.filter(t => t !== tab).forEach(t => t.setAttribute("aria-selected", "false"));
-}
-
-skillTabs.forEach(tab => {
-  tab.addEventListener("click", () => {
-    const skillKey = tab.getAttribute("data-skill");
-    const label = tab.textContent.trim();
-    setActiveSkill(tab);
-    renderEvidence(skillKey, label);
-  });
-});
-
-// initial
-renderEvidence("sql", "SQL");
