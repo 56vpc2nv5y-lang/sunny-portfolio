@@ -4,28 +4,28 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sunny Zhang | Data Analyst</title>
-  <meta name="description" content="Sunny Zhang (ZHANG JINGYI) — Data Analyst focused on visualization, SQL, and modelling." />
+  <meta name="description" content="Sunny Zhang — Data Analyst focused on visualization, SQL, and modelling." />
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
-  <!-- Top Nav -->
   <header class="topbar">
     <div class="container topbar-inner">
-      <a class="btn" href="resume.pdf" download>Download CV</a>
+      <a class="btn small" href="resume.pdf" download="Sunny_Zhang_Resume.pdf">
+        <i class="fas fa-download"></i> Download CV
+      </a>
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#education">Education</a>
         <a href="#experience">Experience</a>
         <a href="#projects">Projects</a>
-        <a href="#skills">Skills</a>
         <a class="nav-cta" href="#contact">Contact</a>
       </nav>
     </div>
   </header>
 
   <main id="top">
-    <!-- Hero -->
     <section class="section hero">
       <div class="container hero-grid">
         <div class="hero-left reveal">
@@ -39,7 +39,7 @@
 
           <div class="hero-actions">
             <a class="btn primary" href="#projects">View Projects</a>
-            <a class="btn" href="assets/cv.pdf" target="_blank" rel="noopener">Download CV</a>
+            <a class="btn" href="resume.pdf" target="_blank">Preview CV</a>
           </div>
 
           <div class="proof-row">
@@ -52,12 +52,10 @@
 
         <div class="hero-right reveal">
           <div class="hero-card">
-            <div class="hero-img" role="img" aria-label="Profile image placeholder">
-              <img src="image.png" alt="Sunny Zhang"
-     onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
-              <div class="hero-img-fallback">
-                <div class="fallback-title">Portfolio</div>
-                <div class="fallback-sub">Scroll to explore evidence</div>
+            <div class="hero-img">
+              <img src="image.png" alt="Sunny Zhang" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+              <div class="hero-img-fallback" style="display:none;">
+                <div class="fallback-title">SZ</div>
               </div>
             </div>
             <div class="hero-meta">
@@ -67,290 +65,261 @@
               </div>
               <div class="meta-item">
                 <div class="meta-k">Focus</div>
-                <div class="meta-v">BI • Analytics • Insight</div>
-              </div>
-              <div class="meta-item">
-                <div class="meta-k">Domain</div>
-                <div class="meta-v">Finance • Audit • Marketing</div>
+                <div class="meta-v">BI • Analytics</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <div class="container hint">
-        <a class="scroll-hint" href="#about" aria-label="Scroll down">
-          <span>Scroll</span>
-          <span class="arrow">↓</span>
-        </a>
-      </div>
     </section>
 
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <div class="section-head reveal center">
-          <h2>About</h2>
-          <p class="muted">A quick snapshot of who I am and how I work.</p>
-        </div>
-
-        <div class="cards two">
-          <div class="card reveal">
-            <h3>What I do</h3>
-            <ul class="bullets">
-              <li>SQL-driven reporting, dashboarding, and metric validation.</li>
-              <li>Statistical modelling and machine learning for structured insights.</li>
-              <li>Clear communication of results for stakeholders.</li>
-            </ul>
-          </div>
-
-          <div class="card reveal">
-            <h3>What I’m looking for</h3>
-            <ul class="bullets">
-              <li>Data Analyst roles focused on BI, analysis, and decision support.</li>
-              <li>Teams that value clarity, experimentation, and measurable impact.</li>
-              <li>Opportunities to deepen visualization and modelling work.</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section alt">
+    <section id="education" class="section">
       <div class="container">
         <div class="section-head reveal center">
           <h2>Education</h2>
-          <p class="muted">Strong quantitative foundation with applied analytics training.</p>
+          <p class="muted">Quantitative foundation backed by high performance.</p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item card reveal" id="edu-ntu">
-            <div class="timeline-top">
-              <h3>Nanyang Technological University (NTU), Singapore</h3>
-              <span class="tag">Aug 2025 – Jun 2026 (Expected)</span>
+        <div class="education-grid">
+          <div class="edu-card reveal">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <h3>MSc in Analytics</h3>
+                <span class="edu-school">Nanyang Technological University (NTU)</span>
+                <span class="edu-time">Aug 2025 – Jun 2026</span>
+              </div>
             </div>
-            <p><strong>MSc in Analytics</strong> • CGPA: 4.60 / 5.00</p>
-            <p class="muted">Key Modules: Data Mining (A+), Database Systems (A), Statistical Modelling & Data Analytics (A)</p>
+            
+            <div class="edu-metrics">
+              <div class="metric-row">
+                <span class="metric-label">CGPA</span>
+                <span class="metric-val">4.60 / 5.00</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 92%;"></div>
+              </div>
+            </div>
+
+            <div class="edu-modules">
+              <span class="module-tag grade-a">Data Mining (A+)</span>
+              <span class="module-tag grade-a">Database Systems (A)</span>
+              <span class="module-tag">Statistical Modelling</span>
+            </div>
           </div>
 
-          <div class="timeline-item card reveal" id="edu-gdufs">
-            <div class="timeline-top">
-              <h3>Guangdong University of Foreign Studies (GDUFS), China</h3>
-              <span class="tag">Sep 2021 – Jun 2025</span>
+          <div class="edu-card reveal">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-university"></i></div>
+              <div>
+                <h3>BSc in Statistics</h3>
+                <span class="edu-school">Guangdong Univ. of Foreign Studies</span>
+                <span class="edu-time">Sep 2021 – Jun 2025</span>
+              </div>
             </div>
-            <p><strong>BSc in Statistics</strong> • CGPA: 3.90 / 4.00 (Top 4%)</p>
-            <p class="muted">Key Modules: Mathematical Statistics (A+), Econometrics (A+), Modern Regression Analysis (A)</p>
+
+            <div class="edu-metrics">
+              <div class="metric-row">
+                <span class="metric-label">CGPA (Top 4%)</span>
+                <span class="metric-val">3.90 / 4.00</span>
+              </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 97.5%;"></div>
+              </div>
+            </div>
+
+            <div class="edu-modules">
+              <span class="module-tag grade-a">Math Statistics (A+)</span>
+              <span class="module-tag grade-a">Econometrics (A+)</span>
+              <span class="module-tag">Regression Analysis</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Experience -->
-    <section id="experience" class="section">
-      <div class="container">
-        <div class="section-head reveal center">
-          <h2>Professional Experience</h2>
-          <p class="muted">Different titles, one consistent theme: data → insight → action.</p>
-        </div>
-
-        <div class="grid2">
-          <article class="card reveal" id="exp-datastory">
-            <h3>Data Analyst Intern @ DataStory Co., Ltd.</h3>
-            <p class="muted">Apr 2025 – Jun 2025</p>
-            <p>
-              Built BI dashboards and supported performance tracking through SQL-driven reporting, KPI validation, and visualization.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-sql">SQL</a>
-              <a class="taglink" href="#skill-tableau">Tableau</a>
-              <a class="taglink" href="#skill-excel">Excel</a>
-              <a class="taglink" href="#skill-viz">Visualization</a>
-            </div>
-          </article>
-
-          <article class="card reveal" id="exp-ta">
-            <h3>Teaching Assistant (Econometrics) @ GDUFS</h3>
-            <p class="muted">Sep 2023 – Jun 2024</p>
-            <p>
-              Led data analysis workshops and applied modelling / ML in supplementary analyses to improve learning outcomes.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-python">Python</a>
-              <a class="taglink" href="#skill-modelling">Statistical Modelling</a>
-              <a class="taglink" href="#skill-ml">Machine Learning</a>
-            </div>
-          </article>
-
-          <article class="card reveal" id="exp-audit">
-            <h3>Audit Intern @ Huaxing CPA</h3>
-            <p class="muted">Dec 2024 – Mar 2025</p>
-            <p>
-              Conducted financial checks and variance analysis; supported audits with risk-focused analytical reviews.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-excel">Excel</a>
-              <a class="taglink" href="#skill-risk">Risk / Compliance</a>
-              <a class="taglink" href="#skill-modelling">Modelling</a>
-            </div>
-          </article>
-
-          <article class="card reveal" id="exp-securities">
-            <h3>Investment Assistant Intern @ Haitong Securities</h3>
-            <p class="muted">Jun 2023 – Aug 2023</p>
-            <p>
-              Produced market reports based on price/volume analysis and supported insight delivery for clients.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-finance">Finance Domain</a>
-              <a class="taglink" href="#skill-storytelling">Insight Storytelling</a>
-              <a class="taglink" href="#skill-excel">Excel</a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
     <section id="projects" class="section alt">
       <div class="container">
         <div class="section-head reveal center">
           <h2>Projects</h2>
-          <p class="muted">Selected work with clear problem framing and evidence.</p>
+          <p class="muted">Click the cards below to see the How, Why, and What.</p>
         </div>
 
-        <div class="filters reveal">
-          <button class="chip active" data-filter="all">All</button>
-          <button class="chip" data-filter="sql">SQL</button>
-          <button class="chip" data-filter="viz">Visualization</button>
-          <button class="chip" data-filter="model">Modelling</button>
-          <button class="chip" data-filter="nlp">NLP</button>
-        </div>
-
-        <div class="grid3">
-          <article class="card reveal project" data-tags="nlp,viz" id="proj-gov-nlp">
-            <div class="project-media">
-              <img src="assets/project-1.png" alt="Project visual placeholder"
-                   onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
-              <div class="media-fallback">
-                <div class="fallback-title">Project Image</div>
-                <div class="fallback-sub">Replace in /assets</div>
+        <div class="projects-wrapper">
+          
+          <article class="project-accordion reveal">
+            <div class="accordion-header">
+              <div class="header-info">
+                <h3>Government Social Media Analysis</h3>
+                <div class="header-tags">
+                  <span class="tag">Python (NLP)</span>
+                  <span class="tag">Tableau</span>
+                </div>
               </div>
+              <button class="accordion-toggle" aria-label="Toggle details">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-            <h3>Government Social Media Comment Analysis (NLP)</h3>
-            <p class="muted">
-              Built an end-to-end text analytics workflow (collection → cleaning → categorization → reporting) on 20,000 public comments.
-              Delivered structured engagement metrics and content-type insights to evaluate communication effectiveness.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-python">Python</a>
-              <a class="taglink" href="#skill-nlp">NLP</a>
-              <a class="taglink" href="#skill-viz">Visualization</a>
-            </div>
-            <div class="links">
-              <span class="availability">Links available upon request</span>
+
+            <div class="accordion-body">
+              <div class="process-grid">
+                <div class="process-step step-bg">
+                  <h4><i class="fas fa-bullseye"></i> Business Context</h4>
+                  <p>Public feedback on policies was unstructured (20k+ comments), making manual reading impossible and sentiment tracking inaccurate.</p>
+                </div>
+
+                <div class="process-step step-role">
+                  <h4><i class="fas fa-user"></i> What I Did</h4>
+                  <p>Sole owner of the text pipeline. I moved the team from manual sampling to automated topic clustering.</p>
+                </div>
+
+                <div class="process-step step-method">
+                  <h4><i class="fas fa-cogs"></i> Method & Data</h4>
+                  <ul>
+                    <li><strong>Data:</strong> 20,000+ comments via Python scraping.</li>
+                    <li><strong>Tech:</strong> Jieba (segmentation), TF-IDF, K-Means Clustering.</li>
+                    <li><strong>Why:</strong> TF-IDF was chosen over simple counts to filter out generic stopwords effectively.</li>
+                  </ul>
+                </div>
+
+                <div class="process-step step-result">
+                  <h4><i class="fas fa-lightbulb"></i> Insight & Impact</h4>
+                  <ul>
+                    <li>Identified that "Process Delays" accounted for 60% of negative sentiment.</li>
+                    <li>Reduced reporting turnaround time by 90% via automated dashboard.</li>
+                  </ul>
+                  <div class="step-links">
+                    <a href="#" class="link-btn"><i class="fab fa-github"></i> GitHub</a>
+                    <a href="#" class="link-btn"><i class="fas fa-chart-bar"></i> Dashboard Demo</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="card reveal project" data-tags="model,viz" id="proj-health">
-            <div class="project-media">
-              <img src="assets/project-2.png" alt="Project visual placeholder"
-                   onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
-              <div class="media-fallback">
-                <div class="fallback-title">Project Image</div>
-                <div class="fallback-sub">Replace in /assets</div>
+          <article class="project-accordion reveal">
+            <div class="accordion-header">
+              <div class="header-info">
+                <h3>Internet Health Engagement Analysis</h3>
+                <div class="header-tags">
+                  <span class="tag">Random Forest</span>
+                  <span class="tag">Modelling</span>
+                </div>
               </div>
+              <button class="accordion-toggle" aria-label="Toggle details">
+                <i class="fas fa-plus"></i>
+              </button>
             </div>
-            <h3>Health Engagement via the Internet</h3>
-            <p class="muted">
-              Designed an engagement analysis framework, defined measurable indicators, and validated data quality.
-              Identified key drivers through modelling and translated results into actionable recommendations with clear visual summaries.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-modelling">Modelling</a>
-              <a class="taglink" href="#skill-ml">Machine Learning</a>
-              <a class="taglink" href="#skill-viz">Visualization</a>
-            </div>
-            <div class="links">
-              <span class="availability">Links available upon request</span>
+
+            <div class="accordion-body">
+              <div class="process-grid">
+                <div class="process-step step-bg">
+                  <h4><i class="fas fa-bullseye"></i> Business Context</h4>
+                  <p>The platform struggled to understand what specific factors drove user retention and active doctor-patient interaction.</p>
+                </div>
+                <div class="process-step step-role">
+                  <h4><i class="fas fa-user"></i> What I Did</h4>
+                  <p>Designed the engagement framework metrics and led the predictive modelling phase.</p>
+                </div>
+                <div class="process-step step-method">
+                  <h4><i class="fas fa-cogs"></i> Method & Data</h4>
+                  <ul>
+                    <li><strong>Cleaning:</strong> Handled 15% missing data using KNN imputation.</li>
+                    <li><strong>Model:</strong> Random Forest for feature importance; Logistic Regression for odds-ratio interpretation.</li>
+                  </ul>
+                </div>
+                <div class="process-step step-result">
+                  <h4><i class="fas fa-lightbulb"></i> Insight & Impact</h4>
+                  <ul>
+                    <li>Discovered "Response Time" was 3x more predictive of retention than "Doctor Rating".</li>
+                    <li>Proposed a "Rapid Reply" badge feature which is now in development.</li>
+                  </ul>
+                </div>
+              </div>
             </div>
           </article>
 
-          <article class="card reveal project" data-tags="model,sql" id="proj-happiness">
-            <div class="project-media">
-              <img src="assets/project-3.png" alt="Project visual placeholder"
-                   onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
-              <div class="media-fallback">
-                <div class="fallback-title">Project Image</div>
-                <div class="fallback-sub">Replace in /assets</div>
+           <article class="project-accordion reveal">
+            <div class="accordion-header">
+              <div class="header-info">
+                <h3>National Happiness Index System</h3>
+                <div class="header-tags">
+                  <span class="tag">SQL</span>
+                  <span class="tag">PCA</span>
+                </div>
+              </div>
+              <button class="accordion-toggle" aria-label="Toggle details">
+                <i class="fas fa-plus"></i>
+              </button>
+            </div>
+
+            <div class="accordion-body">
+              <div class="process-grid">
+                <div class="process-step step-bg">
+                  <h4><i class="fas fa-bullseye"></i> Business Context</h4>
+                  <p>Regional policymakers lacked a unified, data-driven standard to compare "Quality of Life" across different economic zones.</p>
+                </div>
+                <div class="process-step step-role">
+                  <h4><i class="fas fa-user"></i> What I Did</h4>
+                  <p>Data Architect: Constructed the index system and handled SQL data warehousing for multi-year data.</p>
+                </div>
+                <div class="process-step step-method">
+                  <h4><i class="fas fa-cogs"></i> Method & Data</h4>
+                  <ul>
+                    <li><strong>Data:</strong> 5-year public census data joined via SQL.</li>
+                    <li><strong>Method:</strong> Principal Component Analysis (PCA) to reduce 40 collinear variables to 5 core factors.</li>
+                  </ul>
+                </div>
+                <div class="process-step step-result">
+                  <h4><i class="fas fa-lightbulb"></i> Insight & Impact</h4>
+                  <ul>
+                    <li>Produced a ranking system adopted for internal reporting.</li>
+                    <li>Insight: "Environmental Quality" correlation with happiness increased by 20% post-2023.</li>
+                  </ul>
+                </div>
               </div>
             </div>
-            <h3>National Happiness Index Measurement</h3>
-            <p class="muted">
-              Built a multi-dimension index system and analyzed multi-year public data to compare regional performance.
-              Produced interpretable rankings and factor-attribution insights to support decision making.
-            </p>
-            <div class="pillrow">
-              <a class="taglink" href="#skill-modelling">Modelling</a>
-              <a class="taglink" href="#skill-sql">SQL</a>
-              <a class="taglink" href="#skill-storytelling">Storytelling</a>
-            </div>
-            <div class="links">
-              <span class="availability">Links available upon request</span>
-            </div>
           </article>
+
         </div>
       </div>
     </section>
 
-    <!-- Skills (new style) -->
-    <section id="skills" class="section">
+    <section id="experience" class="section">
       <div class="container">
         <div class="section-head reveal center">
-          <h2>Skills & Evidence</h2>
-          <p class="muted">Click a skill to see where I applied it.</p>
+          <h2>Experience</h2>
         </div>
-
-        <div class="skill-tabs reveal" role="tablist" aria-label="Skill tabs">
-          <button class="skill-tab active" data-skill="sql" id="skill-sql" role="tab" aria-selected="true">SQL</button>
-          <button class="skill-tab" data-skill="tableau" id="skill-tableau" role="tab">Tableau</button>
-          <button class="skill-tab" data-skill="python_nlp" id="skill-python" role="tab">Python (NLP)</button>
-          <button class="skill-tab" data-skill="modelling" id="skill-modelling" role="tab">Statistical Modelling</button>
-          <button class="skill-tab" data-skill="market_research" id="skill-market" role="tab">Market Research</button>
-        </div>
-
-        <div class="evidence-card reveal" aria-live="polite">
-          <div class="evidence-title" id="evidence-title">Usage Evidence for SQL:</div>
-          <div class="evidence-list" id="evidence-list"></div>
+        <div class="grid2">
+          <article class="card">
+             <h3>Data Analyst Intern @ DataStory</h3>
+             <p class="muted">Apr 2025 – Jun 2025</p>
+             <p>Built BI dashboards and validated KPIs using SQL and Tableau. Automated weekly reporting reducing manual work by 5 hours.</p>
+          </article>
+          <article class="card">
+            <h3>Teaching Assistant @ GDUFS</h3>
+            <p class="muted">Sep 2023 – Jun 2024</p>
+            <p>Led Econometrics workshops. Taught Python data cleaning and basic ML concepts to 50+ undergraduates.</p>
+         </article>
+          <article class="card">
+            <h3>Audit Intern @ Huaxing CPA</h3>
+            <p class="muted">Dec 2024 – Mar 2025</p>
+            <p>Conducted variance analysis and financial data consistency checks using Excel and SQL.</p>
+         </article>
         </div>
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="section alt">
-      <div class="container">
-        <div class="section-head reveal center">
-          <h2>Contact</h2>
-          <p class="muted">Let’s connect.</p>
+    <section id="contact" class="section">
+      <div class="container center">
+        <h2>Let's Connect</h2>
+        <p>JINGYI021@e.ntu.edu.sg</p>
+        <div class="links-row">
+          <a class="btn small" href="https://linkedin.com" target="_blank">LinkedIn</a>
+          <a class="btn small" href="https://github.com" target="_blank">GitHub</a>
         </div>
-
-        <div class="cards two">
-          <div class="card reveal">
-            <h3>Email</h3>
-            <p><a class="textlink" href="mailto:JINGYI021@e.ntu.edu.sg">JINGYI021@e.ntu.edu.sg</a></p>
-            <p class="muted">Singapore • Open to Data Analyst opportunities</p>
-          </div>
-
-          <div class="card reveal">
-            <h3>Links</h3>
-            <p><a class="textlink" href="https://www.linkedin.com/in/jingyi-zhang-46289a378/" target="_blank" rel="noopener">LinkedIn</a></p>
-            <p><a class="textlink" href="#" aria-disabled="true">GitHub (add)</a></p>
-            <p class="muted">Replace placeholders once your links are ready.</p>
-          </div>
-        </div>
-
-        <footer class="footer reveal">
-          <span class="muted">© <span id="year"></span> Sunny Zhang • Built for GitHub Pages</span>
+        <footer class="footer">
+          <span class="muted">© 2026 Sunny Zhang</span>
         </footer>
       </div>
     </section>
