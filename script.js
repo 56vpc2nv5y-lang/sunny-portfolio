@@ -44,8 +44,6 @@ document.getElementById("year").textContent = new Date().getFullYear();
 
 // ===== Project filters =====
 const chips = document.querySelectorAll(".chip");
-// FIX: Only target projects inside the "Undergraduate/Experience" section for filtering
-// This prevents Grad Projects (which are separate) from disappearing when you click filters.
 const projects = document.querySelectorAll("#projects .project");
 
 chips.forEach(chip => {
@@ -81,41 +79,49 @@ toggles.forEach(btn => {
 });
 
 // ===== Skills evidence (tabs style) =====
+// 【关键修改】：这里添加了 r_stat 和 office 的数据
 const evidenceData = {
   sql: {
     title: "Usage Evidence for SQL:",
     items: [
-      { label: "DataStory Internship — Monthly KPI reporting & validation", href: "#exp-datastory", meta: "SQL extraction, cleaning, and metric checks for management reports" },
-      { label: "DataStory Internship — Dashboard metric pipeline", href: "#exp-datastory", meta: "KPI monitoring supporting performance tracking" },
+      { label: "DataStory Internship — Monthly KPI reporting", href: "#exp-datastory", meta: "SQL extraction, cleaning, and metric checks" },
       { label: "Happiness Index Project", href: "#proj-happiness", meta: "Joined multi-year public datasets for index construction" }
     ]
   },
   tableau: {
     title: "Usage Evidence for Tableau:",
     items: [
-      { label: "DataStory Internship — 10+ dashboards for leadership review", href: "#exp-datastory", meta: "BI dashboards for performance tracking and reporting" }
+      { label: "DataStory Internship — 10+ dashboards", href: "#exp-datastory", meta: "BI dashboards for performance tracking and reporting" }
     ]
   },
   python_nlp: {
-    title: "Usage Evidence for Python (NLP):",
+    title: "Usage Evidence for Python:",
     items: [
-      { label: "Government Social Media Comment Analysis (NLP)", href: "#proj-gov-nlp", meta: "Pipeline on 20,000 comments: preprocessing → categorization → metrics" },
-      { label: "RAG-based QA System", href: "#grad-projects", meta: "Vector embeddings and semantic search pipeline" }
+      { label: "Gov Social Media NLP", href: "#proj-gov-nlp", meta: "Pipeline on 20,000 comments: preprocessing → LDA" },
+      { label: "RAG-based QA System", href: "#gp-rag", meta: "Vector embeddings and semantic search pipeline" }
     ]
   },
   modelling: {
-    title: "Usage Evidence for Statistical Modelling:",
+    title: "Usage Evidence for Modelling:",
     items: [
-      { label: "Health Engagement via the Internet", href: "#proj-health", meta: "Driver analysis through modelling with interpretable recommendations" },
-      { label: "Teaching Assistant (Econometrics)", href: "#exp-ta", meta: "Econometrics + modelling concepts taught and applied in practice" },
-      { label: "Graduate Project: Advanced Statistical Modelling", href: "#grad-projects", meta: "GLM and multivariate analysis on complex datasets" }
+      { label: "Health Engagement Analysis", href: "#proj-health", meta: "Ordinal Logistic Regression & Random Forest" },
+      { label: "Hybrid Recommender System", href: "#gp-recsys", meta: "Matrix Factorization (SVD) + Deep Learning" }
     ]
   },
-  market_research: {
-    title: "Usage Evidence for Market Research:",
+  // 修复：添加 R 语言数据
+  r_stat: {
+    title: "Usage Evidence for R Language:",
     items: [
-      { label: "Haitong Securities — daily/weekly market reports", href: "#exp-securities", meta: "Market trend analysis based on price/volume and industry data" },
-      { label: "DataStory Internship — social listening insights", href: "#exp-datastory", meta: "Consumer sentiment & engagement analysis supporting strategy" }
+      { label: "Statistical Modelling Project", href: "#gp-stat", meta: "GLM and rigorous hypothesis testing" },
+      { label: "Health Engagement Analysis", href: "#proj-health", meta: "Structural Equation Modeling (SEM) & Regression" }
+    ]
+  },
+  // 修复：添加 Microsoft Suite 数据
+  office: {
+    title: "Usage Evidence for Microsoft Suite:",
+    items: [
+      { label: "Audit Intern @ Huaxing CPA", href: "#exp-audit", meta: "Advanced Excel (Pivot Tables, VLOOKUP) for variance analysis" },
+      { label: "Investment Assistant @ Haitong", href: "#exp-securities", meta: "PowerPoint reporting for market insights" }
     ]
   }
 };
@@ -154,7 +160,10 @@ tabs.forEach(t => {
     });
     t.classList.add("active");
     t.setAttribute("aria-selected", "true");
-    renderEvidence(t.dataset.skill);
+    
+    // 获取点击按钮上的 data-skill 值
+    const skillKey = t.dataset.skill;
+    renderEvidence(skillKey);
   });
 });
 
