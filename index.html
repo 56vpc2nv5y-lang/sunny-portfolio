@@ -6,6 +6,7 @@
   <title>Sunny Zhang | Data Analyst</title>
   <meta name="description" content="Sunny Zhang (ZHANG JINGYI) — Data Analyst focused on visualization, SQL, and modelling." />
   <link rel="stylesheet" href="styles.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -15,7 +16,8 @@
       <nav class="nav">
         <a href="#about">About</a>
         <a href="#education">Education</a>
-        <a href="#projects">Projects</a> <a href="#experience">Experience</a>
+        <a href="#project-timeline">Projects</a> 
+        <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a class="nav-cta" href="#contact">Contact</a>
       </nav>
@@ -35,7 +37,7 @@
           </p>
 
           <div class="hero-actions">
-            <a class="btn primary" href="#projects">View Projects</a>
+            <a class="btn primary" href="#project-timeline">View Projects</a>
             <a class="btn" href="resume.pdf" download>Download CV</a>
           </div>
 
@@ -118,59 +120,67 @@
           <p class="muted">High-impact academic performance.</p>
         </div>
 
-        <div class="timeline">
-          <div class="timeline-item card reveal" id="edu-ntu">
-            <div class="timeline-top">
-              <h3>Nanyang Technological University (NTU), Singapore</h3>
-              <span class="tag">Aug 2025 – Jun 2026 (Expected)</span>
+        <div class="education-grid">
+          
+          <div class="edu-card reveal">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+              <div>
+                <h3>MSc in Analytics</h3>
+                <span class="edu-school">Nanyang Technological University (NTU)</span>
+                <span class="edu-time">Aug 2025 – Jun 2026 (Expected)</span>
+              </div>
             </div>
-            <div class="edu-rows">
-              <div class="edu-left">
-                <p><strong>MSc in Analytics</strong></p>
-                <div class="edu-kpis">
-                  <span class="kpi">CGPA: 4.60 / 5.00</span>
-                  <span class="kpi">Grade: A+/A</span>
-                </div>
+            
+            <div class="edu-metrics">
+              <div class="metric-row">
+                <span class="metric-label">CGPA</span>
+                <span class="metric-val">4.60 / 5.00</span>
               </div>
-              <div class="edu-right">
-                <div style="font-size:13px; color:#64748b; margin-bottom:8px;">Focus & Output:</div>
-                 <div class="edu-kpis" style="margin-top:0">
-                   <span class="kpi">Data Mining (A+)</span>
-                   <span class="kpi">Database Systems (A)</span>
-                   <span class="kpi">Stat Modelling (A)</span>
-                 </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 92%;"></div>
               </div>
+            </div>
+
+            <div class="edu-modules">
+              <span class="module-tag grade-a">Data Mining (A+)</span>
+              <span class="module-tag grade-a">Database Systems (A)</span>
+              <span class="module-tag grade-a">Stat Modelling (A)</span>
             </div>
           </div>
 
-          <div class="timeline-item card reveal" id="edu-gdufs">
-            <div class="timeline-top">
-              <h3>Guangdong University of Foreign Studies (GDUFS), China</h3>
-              <span class="tag">Sep 2021 – Jun 2025</span>
+          <div class="edu-card reveal">
+            <div class="edu-header">
+              <div class="edu-icon"><i class="fas fa-university"></i></div>
+              <div>
+                <h3>BSc in Statistics</h3>
+                <span class="edu-school">Guangdong Univ. of Foreign Studies</span>
+                <span class="edu-time">Sep 2021 – Jun 2025</span>
+              </div>
             </div>
-            <div class="edu-rows">
-              <div class="edu-left">
-                <p><strong>BSc in Statistics</strong></p>
-                <div class="edu-kpis">
-                  <span class="kpi">CGPA: 3.90 / 4.00</span>
-                  <span class="kpi">Top 4% Ranking</span>
-                </div>
+
+            <div class="edu-metrics">
+              <div class="metric-row">
+                <span class="metric-label">CGPA (Top 4%)</span>
+                <span class="metric-val">3.90 / 4.00</span>
               </div>
-              <div class="edu-right">
-                <div style="font-size:13px; color:#64748b; margin-bottom:8px;">Achievements:</div>
-                <div class="edu-kpis" style="margin-top:0">
-                  <span class="kpi">Math Statistics (A+)</span>
-                  <span class="kpi">Econometrics (A+)</span>
-                  <span class="kpi">Scholarship Winner</span>
-                </div>
+              <div class="progress-bar-bg">
+                <div class="progress-bar-fill" style="width: 97.5%;"></div>
               </div>
+            </div>
+
+            <div class="edu-modules">
+              <span class="module-tag grade-a">Math Statistics (A+)</span>
+              <span class="module-tag grade-a">Econometrics (A+)</span>
+              <span class="module-tag grade-a">Regression Analysis (A)</span>
             </div>
           </div>
+
         </div>
       </div>
     </section>
 
-    <section id="projects" class="section">
+    <section id="project-timeline" class="section">
       <div class="container">
         <div class="section-head reveal center">
           <h2>Project Timeline</h2>
@@ -182,7 +192,7 @@
           <div class="timeline-column reveal">
             <h3 class="col-title">Competitions & Leadership</h3>
             
-            <div class="time-card project-collapsible" id="tc-studio">
+            <div class="time-card project-collapsible" id="proj-studio">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -193,23 +203,23 @@
                     <span class="tag">Revenue: 63k</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-studio-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-studio-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-studio-body" hidden>
+              <div class="project-body" id="proj-studio-body" hidden>
                 <div class="proj-summary">
-                  <p><strong>Role:</strong> Led a studio managing 30+ projects and 200+ participants. [cite_start]Generated <strong>CNY 63,000 revenue</strong>[cite: 36].</p>
+                  <p><strong>Role:</strong> Led a studio managing 30+ projects and 200+ participants. Generated <strong>CNY 63,000 revenue</strong>.</p>
                 </div>
                 <div class="proj-insight-box">
-                  <div class="proj-label">Impact</div>
+                  <div class="proj-label">Key Impact</div>
                   <ul class="proj-list">
-                    [cite_start]<li>Team won <strong>Bronze Medal</strong> in "Challenge Cup"[cite: 38].</li>
-                    [cite_start]<li>Mentored teams to 50% National Award win rate[cite: 37].</li>
+                    <li>Team won <strong>Bronze Medal</strong> in "Challenge Cup".</li>
+                    <li>Mentored teams to 50% National Award win rate.</li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div class="time-card project-collapsible" id="tc-health">
+            <div class="time-card project-collapsible" id="proj-health">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -220,23 +230,23 @@
                     <span class="tag">Modelling</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-health-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-health-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-health-body" hidden>
+              <div class="project-body" id="proj-health-body" hidden>
                 <div class="proj-summary">
-                  [cite_start]<p>Analyzed 910 survey responses using <strong>Ordinal Logistic Regression</strong> and <strong>Random Forest</strong>[cite: 30, 31].</p>
+                  <p>Analyzed 910 survey responses using <strong>Ordinal Logistic Regression</strong> and <strong>Random Forest</strong>.</p>
                 </div>
                 <div class="proj-insight-box">
-                  <div class="proj-label">Impact</div>
+                  <div class="proj-label">Key Impact</div>
                   <ul class="proj-list">
-                    [cite_start]<li>Won <strong>National Third Prize</strong> (Top 10%)[cite: 32].</li>
-                    [cite_start]<li>Identified Trust & Content Perception as top drivers[cite: 29].</li>
+                    <li>Won <strong>National Third Prize</strong> (Top 10%).</li>
+                    <li>Identified Trust & Content Perception as top drivers.</li>
                   </ul>
                 </div>
               </div>
             </div>
 
-            <div class="time-card project-collapsible" id="tc-nlp">
+            <div class="time-card project-collapsible" id="proj-gov-nlp">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -247,17 +257,43 @@
                     <span class="tag">NLP</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-nlp-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-gov-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-nlp-body" hidden>
+              <div class="project-body" id="proj-gov-body" hidden>
                 <div class="proj-summary">
-                  [cite_start]<p>Processed 20,000+ comments using Dictionary-based NLP and LDA Topic Modelling[cite: 25].</p>
+                  <p>Processed 20,000+ comments using Dictionary-based NLP and LDA Topic Modelling.</p>
                 </div>
                 <div class="proj-insight-box">
-                  <div class="proj-label">Impact</div>
+                  <div class="proj-label">Key Impact</div>
                   <ul class="proj-list">
-                    [cite_start]<li>Awarded <strong>2nd Prize</strong> (University Level)[cite: 26].</li>
-                    [cite_start]<li>Secured Provincial-level "Climbing Plan" funding[cite: 26].</li>
+                    <li>Awarded <strong>2nd Prize</strong> (University Level).</li>
+                    <li>Secured Provincial-level "Climbing Plan" funding.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+             <div class="time-card project-collapsible" id="proj-happiness">
+              <div class="time-marker"></div>
+              <div class="project-head small-head">
+                <div class="project-head-left">
+                  <span class="time-tag">2023</span>
+                  <h4>Happiness Index</h4>
+                  <div class="pillrow compact">
+                    <span class="tag">Statistics</span>
+                    <span class="tag">SQL</span>
+                  </div>
+                </div>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-happiness-body"><span class="plus">+</span></button>
+              </div>
+              <div class="project-body" id="proj-happiness-body" hidden>
+                <div class="proj-summary">
+                  <p>Constructed a regional happiness index using multi-year public datasets and PCA for weight assignment.</p>
+                </div>
+                <div class="proj-insight-box">
+                  <div class="proj-label">Key Impact</div>
+                  <ul class="proj-list">
+                    <li>Identified key areas for policy improvement.</li>
                   </ul>
                 </div>
               </div>
@@ -268,7 +304,7 @@
           <div class="timeline-column reveal">
             <h3 class="col-title">Course Projects (MSc & BSc)</h3>
 
-            <div class="time-card project-collapsible" id="tc-rag">
+            <div class="time-card project-collapsible" id="gp-rag">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -279,9 +315,9 @@
                     <span class="tag">Vector DB</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-rag-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-rag-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-rag-body" hidden>
+              <div class="project-body" id="gp-rag-body" hidden>
                 <div class="proj-summary">
                   <p>Built a retrieval pipeline using <strong>LangChain & ChromaDB</strong> to reduce LLM hallucinations.</p>
                 </div>
@@ -295,7 +331,7 @@
               </div>
             </div>
 
-            <div class="time-card project-collapsible" id="tc-recsys">
+            <div class="time-card project-collapsible" id="gp-recsys">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -306,9 +342,9 @@
                     <span class="tag">SVD</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-recsys-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-recsys-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-recsys-body" hidden>
+              <div class="project-body" id="gp-recsys-body" hidden>
                 <div class="proj-summary">
                   <p>Solved "Cold Start" problem using Hybrid Filtering (Collaborative + Content-based).</p>
                 </div>
@@ -321,7 +357,7 @@
               </div>
             </div>
 
-            <div class="time-card project-collapsible" id="tc-stat">
+            <div class="time-card project-collapsible" id="gp-stat">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -332,11 +368,11 @@
                     <span class="tag">GLM</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-stat-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-stat-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-stat-body" hidden>
+              <div class="project-body" id="gp-stat-body" hidden>
                 <div class="proj-summary">
-                  <p>Derived causal relationships using GLM and rigorous hypothesis testing.</p>
+                  <p>Derived causal relationships using GLM and rigorous hypothesis testing (normality, homoscedasticity).</p>
                 </div>
                 <div class="proj-insight-box">
                   <div class="proj-label">Result</div>
@@ -347,7 +383,7 @@
               </div>
             </div>
 
-             <div class="time-card project-collapsible" id="tc-mining">
+            <div class="time-card project-collapsible" id="gp-mining">
               <div class="time-marker"></div>
               <div class="project-head small-head">
                 <div class="project-head-left">
@@ -358,11 +394,11 @@
                     <span class="tag">Python</span>
                   </div>
                 </div>
-                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="tc-mining-body"><span class="plus">+</span></button>
+                <button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-mining-body"><span class="plus">+</span></button>
               </div>
-              <div class="project-body" id="tc-mining-body" hidden>
+              <div class="project-body" id="gp-mining-body" hidden>
                 <div class="proj-summary">
-                  <p>User segmentation using PCA, t-SNE, K-Means and DBSCAN.</p>
+                  <p>User segmentation using PCA, t-SNE, K-Means and DBSCAN on large-scale datasets.</p>
                 </div>
               </div>
             </div>
@@ -383,7 +419,7 @@
           <article class="card reveal" id="exp-datastory">
             <h3>Data Analyst Intern @ DataStory Co., Ltd.</h3>
             <p class="muted">Apr 2025 – Jun 2025</p>
-            [cite_start]<p>Developed <strong>10+ BI dashboards</strong> (Tableau) and performed sentiment analysis on <strong>50K+ comments</strong> to support marketing strategy[cite: 19, 20].</p>
+            <p>Developed <strong>10+ BI dashboards</strong> (Tableau) and performed sentiment analysis on <strong>50K+ comments</strong> to support marketing strategy optimization.</p>
             <div class="pillrow">
               <a class="taglink" href="#skill-sql">SQL</a>
               <a class="taglink" href="#skill-tableau">Tableau</a>
@@ -436,6 +472,8 @@
           <button class="skill-tab" data-skill="tableau" id="skill-tableau">Tableau</button>
           <button class="skill-tab" data-skill="python_nlp" id="skill-python">Python</button>
           <button class="skill-tab" data-skill="modelling" id="skill-modelling">Modelling</button>
+          <button class="skill-tab" data-skill="r_stat" id="skill-r">R Language</button>
+          <button class="skill-tab" data-skill="office" id="skill-office">Microsoft Suite</button>
         </div>
 
         <div class="evidence-card reveal">
