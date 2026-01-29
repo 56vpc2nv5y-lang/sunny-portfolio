@@ -137,8 +137,7 @@ p { line-height: 1.65; }
 
 
 /* =========================================
-   1. EDUCATION CARD DESIGN (这就是你想要的图2样式)
-   注意：必须配合你现在 HTML 里的 .education-grid 才能生效
+   1. EDUCATION CARD DESIGN (图2样式)
    ========================================= */
 
 .education-grid {
@@ -209,7 +208,7 @@ p { line-height: 1.65; }
   background-size: 1rem 1rem;
 }
 
-/* 课程标签样式 (图2中的绿色标签) */
+/* 课程标签样式 (绿色) */
 .edu-modules { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
 .module-tag {
   font-size: 12px; padding: 6px 12px; border-radius: 8px; font-weight: 600;
