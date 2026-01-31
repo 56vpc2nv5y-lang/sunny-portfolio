@@ -81,12 +81,36 @@ p { line-height: 1.65; }
   border: 1px solid var(--line); background: #ffffff;
   border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
 }
+
+/* MODIFIED FOR FULL IMAGE DISPLAY */
 .hero-img {
   height: 480px; position: relative;
   background: radial-gradient(900px 260px at 20% 10%, rgba(37,99,235,.16), transparent 55%),
               radial-gradient(900px 260px at 80% 40%, rgba(37,99,235,.10), transparent 60%), #f8fafc;
+  /* Ensure image background doesn't repeat if aspect ratio differs */
+  background-repeat: no-repeat;
+  background-position: center;
 }
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
+
+/* Changed object-fit to contain to show full image */
+.hero-img img { 
+  width: 100%; 
+  height: 100%; 
+  object-fit: contain; 
+  object-position: center bottom; /* Align to bottom usually looks better for full body/portrait */
+  display: block; 
+}
+
+/* Mobile Adjustment for Hero Image */
+@media (max-width: 880px) {
+    .hero-img {
+        /* On mobile, allow height to adjust so it doesn't leave huge whitespace */
+        height: auto;
+        min-height: 300px;
+        aspect-ratio: 1/1; /* Square aspect ratio for mobile usually works well */
+    }
+}
+
 .hero-img.noimg .hero-img-fallback { display: flex; }
 .hero-img-fallback {
   position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
@@ -222,7 +246,7 @@ p { line-height: 1.65; }
 
 
 /* =========================================
-   2. TIMELINE DESIGN
+   2. TIMELINE DESIGN 
    ========================================= */
 
 /* 布局结构 */
