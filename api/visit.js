@@ -1,6 +1,5 @@
 // 文件路径: /api/visit.js
 import { createClient } from '@supabase/supabase-js';
-// crypto 既然不防刷了，hash 其实随便传个随机数都行，但为了兼容数据库参数，保留它
 import crypto from 'crypto'; 
 
 const supabase = createClient(
@@ -13,7 +12,7 @@ export default async function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS');
   
-  // 2. 🔥 核心：告诉浏览器“永远不要缓存这个接口” 🔥
+  // 2. 告诉浏览器不要缓存
   res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate, proxy-revalidate');
   res.setHeader('Pragma', 'no-cache');
   res.setHeader('Expires', '0');
@@ -23,15 +22,15 @@ export default async function handler(req, res) {
   try {
     const { ref = '', path = '/' } = req.query;
     
-    // 生成一个随机指纹 (因为不防刷了，这里只要不为空就行)
+    // 生成随机指纹
     const randomHash = crypto.randomBytes(16).toString('hex');
 
     const country = req.headers['x-vercel-ip-country'] || 'Unknown';
     const city = req.headers['x-vercel-ip-city'] ? decodeURIComponent(req.headers['x-vercel-ip-city']) : 'Unknown';
     
-    // 调用刚才改好的 SQL 函数
+    // 调用数据库函数
     const { data, error } = await supabase.rpc('record_visit', {
-      user_hash: randomHash, // 传入随机数
+      user_hash: randomHash, 
       user_country: country,
       user_city: city,
       page_path: path,
@@ -43,7 +42,8 @@ export default async function handler(req, res) {
     if (error) throw error;
 
     return res.status(200).json({ 
-      total_visits: data?.total_visits || 0,
+      // 👇 就是这里！修复了读取数字的 Bug 👇
+      total_visits: data || 0, 
       message: 'Visit recorded (+1)'
     });
 
