@@ -185,8 +185,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const counterEl = document.getElementById("visit-count");
   const statContainer = document.getElementById("visit-stat");
   
-  // Vercel 部署后的 API 接口地址
-  const API_ENDPOINT = "/api/visit"; 
+  // 🔥 这里已经修改为您的专属 Vercel 域名 🔥
+  const API_ENDPOINT = "https://sunny-portfolio-lemon.vercel.app/api/visit"; 
 
   try {
     const currentPath = window.location.pathname;
