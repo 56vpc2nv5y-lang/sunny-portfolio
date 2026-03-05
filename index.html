@@ -1,392 +1,564 @@
-:root {
-  --bg: #ffffff;
-  --panel: #ffffff;
-  --panel2: #f8fafc;
-  --text: #0f172a;
-  --muted: #475569;
-  --line: #e2e8f0;
-  --accent: #2563eb;
-  --accent-soft: #dbeafe;
-  --shadow: 0 8px 26px rgba(15, 23, 42, .08);
-  --radius: 16px;
-}
-
-* { box-sizing: border-box; }
-
-/* 锚点滚动修复：确保跳转时内容不会被固定的顶部导航栏遮挡 */
-html { 
-  scroll-behavior: smooth; 
-  scroll-padding-top: 90px; /* 全局默认滚动内边距 */
-}
-
-/* 为可能作为锚点目标的元素设置特定的滚动偏移量 */
-section, .section, .card, .time-card, .edu-card {
-  scroll-margin-top: 100px; /* 导航栏高度（约 70px）+ 适当的视觉留白 */
-}
-
-body {
-  margin: 0;
-  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial, "Helvetica Neue", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-}
-
-.container { width: min(1100px, calc(100% - 40px)); margin: 0 auto; }
-a { color: inherit; text-decoration: none; }
-
-/* 顶部导航栏 */
-.topbar {
-  position: sticky; top: 0; z-index: 50;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  border-bottom: 1px solid var(--line);
-}
-.topbar-inner { display: flex; align-items: center; justify-content: space-between; padding: 14px 0; }
-.brand { font-weight: 800; letter-spacing: .3px; }
-.nav { display: flex; gap: 12px; align-items: center; }
-.nav a { color: var(--muted); padding: 8px 10px; border-radius: 10px; }
-.nav a:hover { background: var(--panel2); color: var(--text); }
-.nav-cta { background: var(--accent-soft); color: var(--accent)!important; border: 1px solid #bfdbfe; }
-@media (max-width: 800px) { .nav { display: none; } }
-
-/* 页面通用区块 */
-.section { padding: 72px 0; }
-.section.alt { background: var(--panel2); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.section-head { margin-bottom: 22px; }
-.section-head.center { text-align: center; }
-
-/* 排版基础样式 */
-h1 { font-size: 46px; margin: 10px 0 6px; }
-h2 { font-size: 36px; margin: 0; }
-h3 { font-size: 20px; margin: 0 0 10px; }
-p { line-height: 1.65; }
-.muted { color: var(--muted); }
-.subname { margin: 0 0 14px; color: #64748b; letter-spacing: 1px; }
-.lead { font-size: 16px; max-width: 62ch; }
-
-/* 首屏 / 主视觉区 (Hero) */
-.hero { padding-top: 64px; }
-.hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
-@media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } h1 { font-size: 38px; } }
-
-.pill {
-  display: inline-flex; border: 1px solid #bfdbfe; background: #eff6ff;
-  color: #1d4ed8; padding: 6px 12px; border-radius: 999px; font-size: 13px;
-}
-
-.btn {
-  display: inline-flex; align-items: center; justify-content: center;
-  padding: 10px 14px; border-radius: 12px; border: 1px solid var(--line); background: #ffffff;
-}
-.btn:hover { background: #f8fafc; }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #ffffff; }
-
-.hero-actions { display: flex; gap: 12px; margin: 18px 0 16px; flex-wrap: wrap; }
-.proof-row { display: flex; gap: 10px; flex-wrap: wrap; }
-.proof {
-  font-size: 12px; padding: 6px 10px; border-radius: 999px;
-  border: 1px solid var(--line); background: #ffffff;
-}
-
-/* 首屏展示卡片 */
-.hero-card {
-  border: 1px solid var(--line); background: #ffffff;
-  border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden;
-}
-.hero-img {
-  height: 480px; position: relative;
-  background: radial-gradient(900px 260px at 20% 10%, rgba(37,99,235,.16), transparent 55%),
-              radial-gradient(900px 260px at 80% 40%, rgba(37,99,235,.10), transparent 60%), #f8fafc;
-}
-.hero-img img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; }
-.hero-img.noimg .hero-img-fallback { display: flex; }
-.hero-img-fallback {
-  position: absolute; inset: 0; display: none; align-items: center; justify-content: center;
-  flex-direction: column; gap: 8px;
-}
-.fallback-title { font-weight: 800; letter-spacing: .6px; }
-.fallback-sub { color: #64748b; font-size: 13px; }
-
-.hero-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 14px; }
-.meta-item { border: 1px solid var(--line); background: #ffffff; border-radius: 14px; padding: 10px 12px; }
-.meta-k { font-size: 12px; color: var(--muted); }
-.meta-v { font-size: 13px; margin-top: 4px; }
-
-/* 滚动提示 */
-.hint { display: flex; justify-content: center; margin-top: 24px; }
-.scroll-hint {
-  display: flex; gap: 8px; align-items: center; color: var(--muted);
-  border: 1px solid var(--line); background: #ffffff; border-radius: 999px; padding: 10px 14px;
-}
-.scroll-hint:hover { background: #f8fafc; }
-.arrow { font-weight: 900; }
-
-/* 卡片与网格布局 */
-.cards { display: grid; gap: 14px; }
-.cards.two { grid-template-columns: 1fr 1fr; }
-@media (max-width: 880px) { .cards.two { grid-template-columns: 1fr; } }
-
-.card {
-  border: 1px solid var(--line); background: #ffffff; border-radius: var(--radius);
-  padding: 18px; box-shadow: var(--shadow);
-  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-}
-.card:hover { transform: translateY(-6px); box-shadow: 0 14px 34px rgba(15,23,42,.12); border-color: #93c5fd; }
-
-.bullets { margin: 10px 0 0 18px; }
-.bullets li { margin: 8px 0; }
-
-.grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-@media (max-width: 880px) { .grid2 { grid-template-columns: 1fr; } }
-
-/* 标签样式 */
-.tag { font-size: 12px; padding: 6px 10px; border-radius: 999px; border: 1px solid var(--line); background: #ffffff; color: #334155; }
-.pillrow { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 14px; }
-.taglink {
-  font-size: 13px; padding: 8px 14px; border-radius: 999px;
-  border: 1px solid #bfdbfe; background: #eff6ff; color: #1d4ed8;
-}
-.taglink:hover { background: #dbeafe; }
-
-
-/* =========================================
-   1. 教育背景卡片设计
-   ========================================= */
-
-.education-grid {
-  display: grid; grid-template-columns: 1fr 1fr;
-  gap: 24px;
-}
-@media (max-width: 768px) {
-  .education-grid { grid-template-columns: 1fr; }
-}
-
-.edu-card {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 16px;
-  padding: 24px;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-  display: flex;
-  flex-direction: column;
-}
-
-.edu-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 20px rgba(15, 23, 42, 0.08);
-  border-color: #93c5fd;
-}
-
-.edu-header {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.edu-icon {
-  width: 48px; height: 48px;
-  background: #f8fafc; color: #2563eb;
-  border: 1px solid #e2e8f0; border-radius: 12px;
-  display: flex; align-items: center; justify-content: center;
-  font-size: 20px; flex-shrink: 0;
-}
-
-.edu-header h3 { font-size: 18px; margin: 0 0 4px 0; color: #0f172a; }
-
-.edu-school { display: block; font-size: 14px; color: #334155; font-weight: 500; line-height: 1.4; }
-.edu-time { display: block; font-size: 13px; color: #64748b; margin-top: 4px; }
-
-/* 进度条样式 */
-.edu-metrics {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0; border-radius: 12px;
-  padding: 16px; margin-bottom: 20px;
-}
-
-.metric-row {
-  display: flex; justify-content: space-between; align-items: center;
-  margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #0f172a;
-}
-.metric-val { color: #2563eb; }
-
-.progress-bar-bg {
-  width: 100%; height: 8px; background: #e2e8f0;
-  border-radius: 99px; overflow: hidden;
-}
-.progress-bar-fill {
-  height: 100%; background: #2563eb; border-radius: 99px;
-  background-image: linear-gradient(45deg,rgba(255,255,255,.15) 25%,transparent 25%,transparent 50%,rgba(255,255,255,.15) 50%,rgba(255,255,255,.15) 75%,transparent 75%,transparent);
-  background-size: 1rem 1rem;
-}
-
-/* 课程标签样式 (绿色突出) */
-.edu-modules { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; }
-.module-tag {
-  font-size: 12px; padding: 6px 12px; border-radius: 8px; font-weight: 600;
-  border: 1px solid var(--line);
-}
-.module-tag.grade-a {
-  background: #ecfccb; /* 浅绿背景 */
-  border-color: #bef264;
-  color: #3f6212; /* 深绿文字 */
-}
-
-
-/* =========================================
-   2. 时间轴设计 (Timeline)
-   ========================================= */
-
-/* 布局结构 */
-.split-layout {
-  display: grid; grid-template-columns: 1fr 1fr; gap: 40px; position: relative;
-}
-@media (max-width: 800px) { .split-layout { grid-template-columns: 1fr; gap: 40px; } }
-
-/* 栏目标题 */
-.col-title {
-  font-size: 20px; color: #1e3a8a; margin-bottom: 24px;
-  padding-left: 12px; border-left: 4px solid #bfdbfe;
-}
-.timeline-column { position: relative; border-left: 2px solid #e2e8f0; padding-left: 24px; }
-
-/* 时间轴圆点 */
-.time-marker {
-  position: absolute; left: -31px; top: 24px;
-  width: 12px; height: 12px; background: #fff;
-  border: 2px solid #2563eb; border-radius: 50%; z-index: 2;
-}
-
-/* 时间轴卡片 */
-.time-card {
-  position: relative; 
-  background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px;
-  padding: 20px;
-  margin-bottom: 24px;
-  box-shadow: 0 4px 12px rgba(15,23,42,.03);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.time-card:hover {
-  transform: translateY(-4px); box-shadow: 0 10px 20px rgba(15,23,42,.08); border-color: #93c5fd;
-}
-
-/* 头部布局 */
-.small-head {
-  display: block; 
-  padding-right: 40px;
-}
-
-.project-head-left { flex: none; }
-
-.time-tag {
-  display: block; font-size: 11px; font-weight: 700; color: #64748b;
-  text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px;
-}
-
-.time-card h4 {
-  margin: 0 0 12px 0; font-size: 18px; 
-  color: #0f172a; line-height: 1.3;
-}
-
-/* 紧凑型标签行 */
-.pillrow.compact { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
-.pillrow.compact .tag {
-  padding: 4px 10px; font-size: 12px; background: #eff6ff;
-  border: 1px solid #bfdbfe; color: #1d4ed8; border-radius: 99px;
-}
-
-/* 右上角绝对定位的操作按钮 */
-.time-card .proj-toggle {
-  position: absolute;
-  top: 20px; right: 20px; 
-  width: 32px; height: 32px;
-  border-radius: 8px; border: 1px solid #e2e8f0; background: #fff;
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-}
-.time-card .proj-toggle:hover { background: #f8fafc; border-color: #93c5fd; }
-.proj-toggle .plus { font-weight: 900; font-size: 18px; color: #1d4ed8; line-height: 1; }
-
-/* 展开的项目详情区域 */
-.time-card .project-body {
-  margin-top: 16px; padding-top: 16px; border-top: 1px solid #f1f5f9;
-  animation: projOpen .18s ease;
-}
-@keyframes projOpen { from { opacity: 0; transform: translateY(-6px) } to { opacity: 1; transform: translateY(0) } }
-
-/* 项目说明与成果展示框 */
-.proj-summary {
-  font-size: 14px; color: var(--text); line-height: 1.6;
-  margin-bottom: 16px; padding: 0 4px;
-}
-.proj-insight-box {
-  background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px;
-  padding: 14px 16px; margin-bottom: 16px;
-}
-.proj-insight-box .proj-label {
-  color: #1d4ed8; font-weight: 800; font-size: 14px; margin-bottom: 6px; display: block;
-}
-.proj-insight-box .proj-list {
-  margin: 0; padding-left: 18px; color: #1e3a8a; font-size: 14px; line-height: 1.5;
-}
-.proj-insight-box .proj-list li { margin: 6px 0; }
-.proj-links { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
-
-
-/* 技能与凭证展示区域 (Skills evidence) */
-.skill-tabs{ display:flex; gap:18px; justify-content:center; flex-wrap:wrap; margin:26px 0 18px; }
-.skill-tab{
-  cursor:pointer; border:1px solid var(--line); background:#ffffff; color:#0f172a;
-  padding:14px 26px; border-radius:14px; font-weight:700;
-  box-shadow: 0 10px 24px rgba(15,23,42,.06); transition: all 0.2s ease;
-}
-.skill-tab:hover{ background:#f8fafc; transform: translateY(-2px); }
-.skill-tab.active{ border-color:#93c5fd; background:#eff6ff; color:#1d4ed8; }
-
-.evidence-card{
-  margin-top:18px; border-radius:18px; border:1px solid var(--line);
-  background:#ffffff; box-shadow: var(--shadow); padding:26px 24px;
-  position:relative; overflow:hidden;
-}
-.evidence-card::before{
- content:""; position:absolute; left:0; top:0; bottom:0;
- width:6px; background:var(--accent);
-}
-.evidence-title{ font-size:20px; font-weight:800; color:#1d4ed8; margin:0 0 12px 0; }
-.evidence-list{ display:grid; gap:10px; }
-.evidence-item{ display:flex; gap:10px; align-items:flex-start; color:#0f172a; line-height:1.6; }
-.evidence-bullet{ color:#1d4ed8; font-weight:900; margin-top:2px; }
-.evidence-item a{ color:#0f172a; text-decoration:none; border-bottom:1px dashed rgba(37,99,235,.35); }
-.evidence-item a:hover{ border-bottom-color:rgba(37,99,235,.75); }
-.evidence-meta{ color:#64748b; font-size:13px; margin-top:2px; }
-
-/* 页脚 */
-.footer{ padding:18px 0; border-top:1px solid var(--line); margin-top:20px; text-align:center; }
-
-/* 滚动渐显动画 (Scroll reveal) */
-.reveal{ opacity:0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
-.reveal.visible{ opacity:1; transform: translateY(0); }
-
-
-/* =========================================
-   3. 文件下载链接样式 (新增)
-   ========================================= */
-.proj-files {
-  margin-top: 14px;
-  padding-top: 12px;
-  border-top: 1px dashed #e2e8f0;
-}
-.file-label {
-  font-size: 12px; font-weight: 700; color: #64748b;
-  text-transform: uppercase; margin-bottom: 8px;
-}
-.file-link {
-  display: flex; align-items: center; gap: 10px;
-  font-size: 13px; color: #2563eb; 
-  padding: 6px 0; text-decoration: none;
-  transition: color 0.2s;
-}
-.file-link:hover { color: #1e40af; text-decoration: underline; }
-.file-icon {
-  width: 16px; text-align: center; color: #93c5fd;
-}
-.file-link:hover .file-icon { color: #2563eb; }
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>章静怡 | 数据分析师</title>
+<meta name="description" content="Sunny Zhang (ZHANG JINGYI) — 数据分析师，专注于数据可视化、SQL和数据建模。" />
+<link rel="stylesheet" href="styles.css" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+ 
+<body>
+<header class="topbar">
+<div class="container topbar-inner">
+<a class="brand" href="#top">Sunny.</a>
+<nav class="nav">
+<a href="#about">关于我</a>
+<a href="#education">教育背景</a>
+<a href="#project-timeline">项目经历</a> 
+<a href="#experience">工作经验</a>
+<a href="#skills">专业技能</a>
+<a class="nav-cta" href="#contact">联系我</a>
+</nav>
+</div>
+</header>
+ 
+<main id="top">
+<section class="section hero">
+<div class="container hero-grid">
+<div class="hero-left reveal">
+<div class="pill">数据分析师 • 数据可视化 • SQL • 数据建模</div>
+<h1>章静怡</h1>
+<p class="subname">ZHANG JINGYI</p>
+ 
+<p class="lead">
+通过熟练应用 SQL 分析、数据可视化及统计建模，将复杂的底层数据转化为清晰的商业洞察。
+</p>
+ 
+<div class="hero-actions">
+<a class="btn primary" href="#project-timeline">查看项目经历</a>
+<a class="btn" href="resume.pdf" download>下载完整简历</a>
+</div>
+ 
+<div class="proof-row">
+<span class="proof">SQL</span>
+<span class="proof">Tableau</span>
+<span class="proof">Python</span>
+<span class="proof">统计建模</span>
+</div>
+</div>
+ 
+<div class="hero-right reveal">
+<div class="hero-card">
+<div class="hero-img" role="img" aria-label="Profile image">
+<img src="image.png" alt="Sunny Zhang" onerror="this.style.display='none'; this.parentElement.classList.add('noimg');" />
+<div class="hero-img-fallback">
+<div class="fallback-title">个人作品集</div>
+<div class="fallback-sub">向下滚动查看更多经历</div>
+</div>
+</div>
+<div class="hero-meta">
+<div class="meta-item">
+<div class="meta-k">所在地</div>
+<div class="meta-v">中国广州</div>
+</div>
+<div class="meta-item">
+<div class="meta-k">研究方向</div>
+<div class="meta-v">商业智能 • 数据分析</div>
+</div>
+</div>
+</div>
+</div>
+ 
+<div class="container hint">
+<a class="scroll-hint" href="#about" aria-label="Scroll down">
+<span>向下滚动</span>
+<span class="arrow">↓</span>
+</a>
+</div>
+</section>
+ 
+<section id="about" class="section">
+<div class="container">
+<div class="section-head reveal center">
+<h2>关于我</h2>
+<p class="muted">关于我的个人简介与工作方式。</p>
+</div>
+ 
+<div class="cards two">
+<div class="card reveal">
+<h3>我能做什么</h3>
+<ul class="bullets">
+<li>基于 SQL 的数据报告撰写、仪表盘搭建及业务指标体系校验。</li>
+<li>运用统计建模与机器学习算法提取结构化的数据洞察。</li>
+<li>逻辑清晰地向业务方及利益相关者汇报分析成果。</li>
+</ul>
+</div>
+ 
+<div class="card reveal">
+<h3>我的求职意向</h3>
+<ul class="bullets">
+<li>专注于商业智能 (BI)、数据分析与业务决策支持的数据分析师岗位。</li>
+<li>看重逻辑清晰、乐于探索实验并追求实际业务影响力的团队。</li>
+<li>能在数据可视化和统计建模领域持续深耕的发展机会。</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+ 
+<section id="education" class="section alt">
+<div class="container">
+<div class="section-head reveal center">
+<h2>教育背景</h2>
+<p class="muted">扎实的数理统计基础与深度的应用分析训练。</p>
+</div>
+ 
+<div class="education-grid">
+<div class="edu-card reveal">
+<div class="edu-header">
+<div class="edu-icon"><i class="fas fa-graduation-cap"></i></div>
+<div>
+<h3>分析学 硕士 (MSc)</h3>
+<span class="edu-school">南洋理工大学 (NTU)</span>
+<span class="edu-time">2025年8月 – 2026年6月 (预计)</span>
+</div>
+</div>
+<div class="edu-metrics">
+<div class="metric-row">
+<span class="metric-label">GPA</span>
+<span class="metric-val">4.60 / 5.00</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 92%;"></div>
+</div>
+</div>
+ 
+<div class="edu-modules">
+<span class="module-tag grade-a">数据挖掘 (A+)</span>
+<span class="module-tag grade-a">数据库系统 (A)</span>
+<span class="module-tag grade-a">统计建模 (A)</span>
+</div>
+</div>
+ 
+<div class="edu-card reveal">
+<div class="edu-header">
+<div class="edu-icon"><i class="fas fa-university"></i></div>
+<div>
+<h3>统计学 学士 (BSc)</h3>
+<span class="edu-school">广东外语外贸大学</span>
+<span class="edu-time">2021年9月 – 2025年6月</span>
+</div>
+</div>
+ 
+<div class="edu-metrics">
+<div class="metric-row">
+<span class="metric-label">GPA (专业前 4%)</span>
+<span class="metric-val">3.90 / 4.00</span>
+</div>
+<div class="progress-bar-bg">
+<div class="progress-bar-fill" style="width: 97.5%;"></div>
+</div>
+</div>
+ 
+<div class="edu-modules">
+<span class="module-tag grade-a">数理统计 (A+)</span>
+<span class="module-tag grade-a">计量经济学 (A+)</span>
+<span class="module-tag grade-a">回归分析 (A)</span>
+</div>
+</div>
+ 
+</div>
+</div>
+</section>
+ 
+<section id="project-timeline" class="section">
+<div class="container">
+<div class="section-head reveal center">
+<h2>项目经历</h2>
+<p class="muted">竞赛及实践经历 (左) / 学术及课程项目 (右) - 点击 "+" 展开查看相关文件</p>
+</div>
+ 
+<div class="split-layout">
+<div class="timeline-column reveal">
+<h3 class="col-title">竞赛及实践经历</h3>
+<div class="time-card project-collapsible" id="proj-studio">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2023年6月 – 2024年6月</span>
+<h4>数据分析工作室</h4>
+<div class="pillrow compact">
+<span class="tag">团队管理</span>
+<span class="tag">跨部门协作</span>
+<span class="tag">数据仪表盘</span>
+<span class="tag">创收: 6.3万</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-studio-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="proj-studio-body" hidden>
+<div class="proj-summary">
+<p><strong>担任负责人：</strong>统筹管理数据分析工作室，推进 30+ 个项目，带领 200+ 成员参与，实现项目创收 <strong>人民币 63,000 元</strong>。</p>
+</div>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>带领团队荣获“挑战杯”全国大学生课外学术科技作品竞赛<strong>国家级铜奖</strong>。</li>
+<li>指导多支参赛队伍，使其国家级奖项获奖率达到 50%。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="V2_data studio.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="V1_sales dashboard.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 可视化看板 (Mock)</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="proj-health">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2022年11月 – 2023年4月</span>
+<h4>健康管理参与度分析</h4>
+<div class="pillrow compact">
+<span class="tag">项目组长</span>
+<span class="tag">国家级三等奖</span>
+<span class="tag">机器学习</span>
+<span class="tag">Python&R</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-health-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="proj-health-body" hidden>
+<div class="proj-summary">
+<p><strong>担任组长：</strong>带领 3 人团队分析 910 份居民问卷数据，独立负责有序逻辑回归与结构方程模型 (SEM) 的构建。</p>
+</div>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>荣获<strong>国家级三等奖</strong>（全国前 10%）。</li>
+<li>通过数据挖掘确立了“信任度”与“内容感知”是提升居民参与度的核心驱动因素。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="ML6_market.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="ML6_Toward Better Health Through Digital Connectivity_Residents’ Willingness to Engage in Internet-Based Health Education and Its Development Pathways.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 答辩演示 PPT</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="proj-gov-nlp">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2022年6月 – 2023年6月</span>
+<h4>政务社媒评论 NLP 分析</h4>
+<div class="pillrow compact">
+<span class="tag">项目组长</span>
+<span class="tag">省级立项</span>
+<span class="tag">NLP</span>
+<span class="tag">Python</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-gov-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="proj-gov-body" hidden>
+<div class="proj-summary">
+<p><strong>担任组长：</strong>带领 6 人数据团队，运用自然语言处理 (NLP) 技术与可复用的 Python 管道逻辑，全自动化分析 20,000 条政务社媒互动评论数据。</p>
+</div>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>荣获<strong>省级二等奖</strong>。</li>
+<li>设计并构建了一套用于评估政务信息传播效果的全新量化框架。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="NLP2_COMPETITION.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="proj-happiness">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2023年</span>
+<h4>城市幸福指数研究</h4>
+<div class="pillrow compact">
+<span class="tag">项目组长</span>
+<span class="tag">省级二等奖</span>
+<span class="tag">因果推断</span>
+<span class="tag">Python</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="proj-happiness-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="proj-happiness-body" hidden>
+<div class="proj-summary">
+<p><strong>担任组长：</strong>主导端到端的定量研究，利用《中国统计年鉴》(2013–2021) 宏观数据，量化并评估各地区在共同富裕背景下的居民幸福感。</p>
+</div>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>荣获全国大学生统计建模大赛<strong>省级二等奖</strong>。</li>
+<li>建立并验证了共同富裕背景下居民幸福感的综合评估模型与指标体系。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="CI1_index.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="CI1_logic.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 研究底层逻辑说明</a>
+</div>
+</div>
+</div>
+ 
+</div>
+ 
+<div class="timeline-column reveal">
+<h3 class="col-title">学术及课程项目</h3>
+ 
+<div class="time-card project-collapsible" id="gp-bank">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2025年11月</span>
+<h4>银行理财产品认购预测</h4>
+<div class="pillrow compact">
+<span class="tag">机器学习</span>
+<span class="tag">XGboost</span>
+<span class="tag">数据可视化</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-bank-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="gp-bank-body" hidden>
+<div class="proj-summary">
+<p><strong>担任队长：</strong>带领 10 人团队，构建核心分析叙事逻辑，并全权负责 XGBoost 模型的开发与各类算法的横向对比评估。</p>
+</div>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>建立了一个将机器学习预测性能与实际业务转化目标挂钩的模型筛选框架。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="ML1_datamining.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="ML1_XGboost and comparison.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 演示文稿</a>
+<a href="ML1_XGboost & comparison_report.pdf" target="_blank" class="file-link"><i class="fas fa-file-alt file-icon"></i> 完整报告 (PDF)</a>
+<a href="ML1_XGBoost.ipynb" download class="file-link"><i class="fab fa-python file-icon"></i> 源代码 (Jupyter Notebook)</a>
+<a href="ML1_XGBoost_graph.R" download class="file-link"><i class="fab fa-r-project file-icon"></i> 绘图代码 (R Script)</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="gp-ev">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2025年4月</span>
+<h4>电动汽车：绿色环保还是利益权衡？</h4>
+<div class="pillrow compact">
+<span class="tag">因果推断</span>
+<span class="tag">能源分析</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-ev-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="gp-ev-body" hidden>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>揭示了电动汽车的真实碳减排效益高度依赖于当地电网的能源结构。</li>
+<li>从产品全生命周期评估 (LCA) 视角，为差异化的电动汽车产业政策设计提供了实证支持。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="CI2_Igraduate thesis.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="CI2_Electric Vehicles Green Future or Environmental Trade offs Evidence from a Life Cycle Assessment Perspective.pdf.pdf.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 毕业论文</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="gp-restaurant">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2024年6月</span>
+<h4>餐厅短期客流量预测 (ARIMA)</h4>
+<div class="pillrow compact">
+<span class="tag">时间序列分析</span>
+<span class="tag">ARIMAX</span>
+<span class="tag">R语言</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-restaurant-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="gp-restaurant-body" hidden>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>运用 ARIMAX 模型精准预测餐厅客流量，协助管理层优化员工排班与物资库存管理，显著提升运营效率。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="TIME2_restaurant.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 项目概览</a>
+<a href="TIME2_Short-Term Restaurant Customer Flow Forecasting with ARIMA.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 分析报告</a>
+</div>
+</div>
+</div>
+ 
+<div class="time-card project-collapsible" id="gp-duifenyi">
+<div class="time-marker"></div>
+<div class="project-head small-head">
+<div class="project-head-left">
+<span class="time-tag">2022年12月</span>
+<h4>对分易学习管理系统数据库设计</h4>
+<div class="pillrow compact">
+<span class="tag">SQL</span>
+<span class="tag">ER建模</span>
+</div>
+</div>
+<button class="proj-toggle" type="button" aria-expanded="false" aria-controls="gp-duifenyi-body"><span class="plus">+</span></button>
+</div>
+<div class="project-body" id="gp-duifenyi-body" hidden>
+<div class="proj-insight-box">
+<div class="proj-label">核心成果</div>
+<ul class="proj-list">
+<li>设计并构建了符合第三范式 (3NF) 的数据库系统架构，全面支持学生考勤、成绩评估与课程管理业务流。</li>
+</ul>
+</div>
+<div class="proj-files">
+<div class="file-label">项目文件:</div>
+<a href="sql1_ER.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> ER 图 (PNG)</a>
+<a href="sql1_FLOW.png" target="_blank" class="file-link"><i class="fas fa-image file-icon"></i> 业务流程图 (PNG)</a>
+<a href="SQL1_Duifenyi Learning Management System.pdf" target="_blank" class="file-link"><i class="fas fa-file-pdf file-icon"></i> 项目报告</a>
+</div>
+</div>
+</div>
+ 
+</div>
+</div>
+</div>
+</section>
+ 
+<section id="experience" class="section alt">
+<div class="container">
+<div class="section-head reveal center">
+<h2>工作经验</h2>
+<p class="muted">不同的岗位，一致的目标：从数据提炼洞察，用洞察驱动决策。</p>
+</div>
+ 
+<div class="grid2">
+<article class="card reveal" id="exp-datastory">
+<h3>数据分析实习生 @ 数说故事 (DataStory)</h3>
+<p class="muted">2025年4月 – 2025年6月</p>
+<p>独立开发并搭建了 <strong>10+ 个 BI 仪表盘</strong> (Tableau)，完成对 <strong>5万余条社媒评论</strong>的数据清洗与情感分析，为客户优化营销策略提供数据支持。</p>
+<div class="pillrow">
+<a class="taglink" href="#skill-sql">SQL</a>
+<a class="taglink" href="#skill-viz">数据可视化</a>
+<a class="taglink" href="#skill-viz">ESG 分析</a>
+</div>
+</article>
+ 
+<article class="card reveal" id="exp-ta">
+<h3>计量经济学助教 @ 广东外语外贸大学</h3>
+<p class="muted">2023年9月 – 2024年6月</p>
+<p>主讲数据分析实操课程，运用统计建模与机器学习算法撰写辅助性分析案例，显著提升了课程的教学效果与学生的实操能力。</p>
+<div class="pillrow">
+<a class="taglink" href="#skill-python">Python</a>
+<a class="taglink" href="#skill-ml">数据建模</a>
+</div>
+</article>
+ 
+<article class="card reveal" id="exp-audit">
+<h3>审计实习生 @ 华兴会计师事务所</h3>
+<p class="muted">2024年12月 – 2025年1月</p>
+<p>负责执行底稿财务数据核查与差异分析；通过侧重风险把控的分析性复核程序，协助项目组完成年度审计工作。</p>
+<div class="pillrow">
+<a class="taglink" href="#skill-viz">Excel</a>
+<a class="taglink" href="#skill-risk">风险与合规控制</a>
+</div>
+</article>
+ 
+<article class="card reveal" id="exp-securities">
+<h3>投资助理实习生 @ 海通证券</h3>
+<p class="muted">2023年6月 – 2023年8月</p>
+<p>基于市场底层量价数据开展深度分析并定期出具市场研报，协助分析师向高净值客户输出专业的投研洞察。</p>
+<div class="pillrow">
+<a class="taglink" href="#skill-python">Python</a>
+<a class="taglink" href="#skill-storytelling">数据报告</a>
+</div>
+</article>
+</div>
+</div>
+</section>
+ 
+<section id="skills" class="section">
+<div class="container">
+<div class="section-head reveal center">
+<h2>专业技能</h2>
+<p class="muted">点击具体技能标签，查看我在对应项目中的实战应用经验。</p>
+</div>
+ 
+<div class="skill-tabs reveal" role="tablist">
+<button class="skill-tab active" data-skill="viz" id="skill-viz">数据可视化 (Tableau, PowerBI, Excel)</button>
+<button class="skill-tab" data-skill="sql" id="skill-sql">SQL</button>
+<button class="skill-tab" data-skill="python" id="skill-python">Python</button>
+<button class="skill-tab" data-skill="r_stat" id="skill-r">R语言</button>
+<button class="skill-tab" data-skill="ml" id="skill-ml">机器学习</button>
+<button class="skill-tab" data-skill="nlp" id="skill-nlp">NLP 自然语言处理</button>
+<button class="skill-tab" data-skill="ts" id="skill-ts">时间序列分析</button>
+<button class="skill-tab" data-skill="causal" id="skill-causal">因果推断</button>
+<button class="skill-tab" data-skill="genai" id="skill-genai">Gen AI 生成式人工智能</button>
+</div>
+ 
+<div class="evidence-card reveal">
+<div class="evidence-title" id="evidence-title">数据可视化相关应用经验：</div>
+<div class="evidence-list" id="evidence-list"></div>
+</div>
+</div>
+</section>
+ 
+<section id="contact" class="section alt">
+<div class="container">
+<div class="section-head reveal center">
+<h2>联系我</h2>
+<p class="muted">期待与您交流探讨工作机会。</p>
+</div>
+ 
+<div class="cards two">
+<div class="card reveal">
+<h3>电子邮箱</h3>
+<p><a class="textlink" href="mailto:zaozhang146@gmail.com">zaozhang146@gmail.com</a></p>
+<p class="muted">所在地: 新加坡 • 积极寻找数据分析师相关岗位</p>
+</div>
+<div class="card reveal">
+<h3>社交平台</h3>
+<p><a class="textlink" href="https://www.linkedin.com/in/jingyi-zhang-46289a378/" target="_blank">LinkedIn (领英)</a></p>
+</div>
+</div>
+<footer class="footer reveal">
+<span class="muted">© <span id="year"></span> Sunny Zhang • 部署于 GitHub Pages</span>
+<div id="visit-stat" class="muted" style="font-size: 12px; margin-top: 8px; opacity: 0; transition: opacity 1s;">
+<i class="fas fa-chart-line"></i>
+<span id="visit-count">...</span> visits
+<span style="margin: 0 5px;">•</span>
+<span>访问统计为完全匿名化处理，不收集任何个人隐私信息。</span>
+</div>
+</footer>
+</div>
+</section>
+</main>
+ 
+<script src="script.js"></script>
+</body>
+</html>
